@@ -205,8 +205,8 @@ num_north=0
 # Check file information (assumes order of data in file)
 if not file_psr is None:
     pulsar_list=[]
-    for i in range(len(np.genfromtxt('test.dat',dtype=None,usecols=[1,2,3,4,5,6]))):
-        pulsar_list.append(Pulsar(np.genfromtxt('test.dat',dtype=None,usecols=[1,2,3,4,5,6])[i]))
+    for i in range(len(np.genfromtxt('test.dat',usecols=[0]))):
+        pulsar_list.append(Pulsar(np.genfromtxt('test.dat',dtype=[('f0', 'S10'), ('f1', '<f8'), ('f2', '<f8'), ('f3', '<f8'), ('f4', '<f8'), ('f5', '<f8')],usecols=[1,2,3,4,5,6])[i]))    #note: this fails if input file has only one line
 	num_north+=int(pulsar_list[i].north)
     print "%d/%d pulsars in survey area. Finding closest beams..." %(num_north,len(pulsar_list))
     beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
@@ -383,39 +383,48 @@ for psr in pulsar_list:
 			    rfi_opt = " -zapchan 2470:3270"
 			else:
 			    rfi_opt = " "
-			if not os.path.isfile(glob('*_%s_rfifind.mask' %beam_cand.num)[0]) or \
-			   len(glob('/users/amcewen/GBNCC_work/tar_test/*/*GBNCC%s*rfifind.mask' %beam_cand.num))==0 or \
-			   (len(glob('*%s*.bestprof' %beam_cand.num)) == 0 and
-			    len(glob('*%s_*.stats' %beam_cand.num)) == 0): 						#add untar business here
-			    rfi_other = glob(work_dir+'*/*_%s_rfifind.stats' %beam_cand.num)
-			    for blah in rfi_other:
-				if blah.split('/')[-2] != psr.name+'_temp':
-				    if len(glob("%s_%s_rfifind.mask" %(psr.name,beam_cand.num))) > 0:
-					# Avoid having multiple mask files 
-					sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
-				    # Save time on rfifind 
-				    sproc.call('cp -s %s.* .' %blah.split('.')[0], shell=True) 
-				    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
-				    if len(rfi_othertxt) > 0:
-					sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
-				    break
-			    if len(glob('*_%s_rfifind.stats' %beam_cand.num)) == 0:
-				print "Running rfifind for %s..." %psr.name
-				rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
-				rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
-					      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam))
-				p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
-						%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam),
-						stdout=rfi_out, shell=True)
-				p.wait()
-				rfi_out.flush()
-				rfi_out.close()
-				del p
-			if os.path.isfile(glob('*_%s_rfifind.mask' %beam_cand.num)[0]):
-				beam_cand.add_mask(glob('*_%s_rfifind.mask' %beam_cand.num)[0])
-			elif os.path.isfile(glob('/users/amcewen/GBNCC_work/tar_test/*/*GBNCC%s*rfifind.mask' %beam_cand.num)[0]):
-				beam_cand.add_mask(glob('/users/amcewen/GBNCC_work/tar_test/*/*GBNCC%s*rfifind.mask' %beam_cand.num)[0])
-			if os.path.isfile(glob('rfifind_%s_output.txt' %beam_cand.num)[0]):
+			if not os.path.isfile('*%s*rfifind.mask' %beam_cand.num):
+			    if len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num))==0:
+			    	    mask_dir=glob(data_dir+'20*/*GBNCC%s*' %beam_cand.num)[0].split('/')[5] 
+				    if os.path.isfile(glob(data_dir+mask_dir+'/*rfi*tar*')[0]):
+					print "untarring mask file"
+					os.chdir(data_dir+'amcewen/mask_files/')
+					tar_file=glob('../../'+mask_dir+'/*rfi*tar*')[0]
+					sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
+					sproc.call('cp *GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.num,work_dir,psr.name))
+					os.chdir(work_dir+'*%s*' %psr.name)
+				    else:
+					rfi_other = glob(work_dir+'*/*_%s_rfifind.stats' %beam_cand.num)
+					for blah in rfi_other:
+					    if blah.split('/')[-2] != psr.name+'_temp':
+					        if len(glob("%s_%s_rfifind.mask" %(psr.name,beam_cand.num))) > 0:
+						    # Avoid having multiple mask files 
+					       	    sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
+						    # Save time on rfifind 
+						    sproc.call('cp -s %s.* .' %blah.split('.')[0], shell=True) 
+						    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
+						    if len(rfi_othertxt) > 0:
+							sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
+						    break
+					    if len(glob('*_%s_rfifind.stats' %beam_cand.num)) == 0:
+						print "Running rfifind for %s..." %psr.name
+						rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
+						rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
+							      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam))
+						p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
+								%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam),
+								stdout=rfi_out, shell=True)
+						p.wait()
+						rfi_out.flush()
+						rfi_out.close()
+						del p
+			    else:
+				    mask_str=glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num)[0]
+				    print mask_str
+				    sproc.call('cp %s ./' %mask_str)
+			mask_file=glob('*GBNCC%s*rfifind.mask' %beam_cand.num)
+			beam_cand.add_mask(mask_file)
+			if os.path.isfile('rfifind_%s_output.txt' %beam_cand.num):
 			    B = sproc.Popen(["grep 'good' rfifind_%s_output.txt | awk '{ print $6 }'"
 					     %beam_cand.num],stdout=sproc.PIPE,shell=True).communicate()[0]
 			    if B == '' and MJD_beam < 56710:
