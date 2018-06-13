@@ -34,23 +34,19 @@ import numpy as np
 import sys, os
 from glob import glob
 import subprocess as sproc
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from time import strftime
 import argparse as ap
 import astropy.coordinates as coord
 from astropy.table import Table,Column
 from astropy import units as u, constants as c
-# Function to find distance from Joe Swiggum
 
+
+# Function to find distance 
 def ang_offset(lon1,lat1,lon2,lat2):
 	x="%d %d" %(lon1,lat1)
 	y="%d %d" %(lon2,lat2)
 	return float(coord.SkyCoord(x,unit=("deg","deg")).separation(coord.SkyCoord(y,unit=("deg","deg")))/u.deg)
-#    d2r = np.pi/183.
-#    term1 = np.sin(lat1*d2r)*np.sin(lat2*d2r)
-#    term2 = np.cos(lat1*d2r)*np.cos(lat2*d2r)*np.cos(lon1*d2r-lon2*d2r)
-#    offset = np.arccos(term1+term2)
-#    return offset/d2r
 
 
 def proc_args():
@@ -191,8 +187,6 @@ elif use_comp == "GB":
 
 # Get info on all GBNCC past and future beams from Scott Ransom's file
 
-#beam_num = []
-
 if not os.path.isfile('./GBNCC_pointings.fits'):
 	filename='/users/sransom/GBNCC/GBNCC_posns_by_dec_ALLGBTSKY.txt'
 	np.fromfile(filename)
@@ -206,85 +200,23 @@ ra_pointings=np.array(t['RAdeg'])
 dec_pointings=np.array(t['Decdeg'])
 
 
-#beam_num = np.array(beam_num)
-#ra_pointings = np.array(ra_astro)
-#dec_pointings = np.array(dec_astro)
 num_north=0
 
 # Check file information (assumes order of data in file)
 if not file_psr is None:
     pulsar_list=[]
-    for i in range(len(np.genfromtxt('test.dat',dtype=None,usecols=[1,2,3,4,5,6]))):
-        pulsar_list.append(Pulsar(np.genfromtxt('test.dat',dtype=None,usecols=[1,2,3,4,5,6])[i]))
+    for i in range(len(np.genfromtxt('test.dat',usecols=[0]))):
+        pulsar_list.append(Pulsar(np.genfromtxt('test.dat',dtype=[('f0', 'S10'), ('f1', '<f8'), ('f2', '<f8'), ('f3', '<f8'), ('f4', '<f8'), ('f5', '<f8')],usecols=[1,2,3,4,5,6])[i]))    #note: this fails if input file has only one line
 	num_north+=int(pulsar_list[i].north)
-#    num_all_psr = []
-#    name_all_psr = []
-#    ra_all_psr = []
-#    dec_all_psr = []
-#    p0_all_psr = []
-#    pd_all_psr = []
-#    dm_all_psr = []
-#    stat_all_psr = []
-#    read_all_psr = open(file_psr, 'r')
-#    pulsar_list = []
-#    for line in read_all_psr:
-#        if line.split()[1][0] == "J" or \
-#           (line.split()[1][0] == "C" and line.split()[2][0] != "P"):
-#            num_all_psr.append(int(line.split()[0]))
-#            name_all_psr.append(line.split()[1])
-#            ra_all_psr.append(float(line.split()[2]))
-#            dec_all_psr.append(float(line.split()[3]))
-#            if (line.split()[4] == "-10.0") or (line.split()[4] == "*"):
-#                p0_all_psr.append(0.0)
-#            else:
-#                p0_all_psr.append(float(line.split()[4]))
-#            # Check for good values of p-dot
-#            if (line.split()[5] == "-10.0") or (line.split()[5] == "*"): 
-#                pd_all_psr.append(0.0)
-#            else:
-#                pd_all_psr.append(float(line.split()[5]))
-#            # And good values of DM (also cut out later)
-#            if (line.split()[6] == "-10.0") or (line.split()[6] == "*"): 
-#                dm_all_psr.append(0.0)
-#            else:
-#                dm_all_psr.append(float(line.split()[6]))
-#            if len(line.split()) > 7:
-#                stat_all_psr.append(line.split()[7])
-#            else:
-#                stat_all_psr.append('*')
-#    num_all_psr = np.array(num_all_psr)
-#    name_all_psr = np.array(name_all_psr)
-#    ra_all_psr = np.array(ra_all_psr)
-#    dec_all_psr = np.array(dec_all_psr)
-#    p0_all_psr = np.array(p0_all_psr)
-#    pd_all_psr = np.array(pd_all_psr)
-#    dm_all_psr = np.array(dm_all_psr)
-#    stat_all_psr = np.array(stat_all_psr)
-#"""
-
-#    north = dec_all_psr > -40 - ang_max
     print "%d/%d pulsars in survey area. Finding closest beams..." %(num_north,len(pulsar_list))
-#    beam_all_psr = []
     beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
     p_coord=[]
-#    good_beams = np.zeros(num_north)+1 #np.array([True for n in name_all_psr[north]])
-#    pulsars=Table.read(file_psr,format='ascii',names=('num','Jname','RAdeg','Decdeg','P0','P1','DM'))
     for psr in pulsar_list:
 	p_coord.append(coord.SkyCoord(psr.ra,psr.dec,unit=('deg','deg')))
     for i in range(len(pulsar_list)):
 	for j in range(len(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'])):
 		if pulsar_list[i].north and not int(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j].strip('GBNCC')) in beam_rejects:
 			pulsar_list[i].add_beam(Beam(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j]))
-#        if len(pulsar_list[i].beams)==0:
-#		good_beams[i] = False
-#		continue
-
-#    for i in range(len(beam_all_psr)):
-#            if len(beam_all_psr[i])==0:
-#	        good_beams[i] = False
-#	        continue
-#	    for j in range(len(beam_all_psr[i])):
-#	    	beam_all_psr[i][j]=beam_all_psr[i][j].strip('GBNCC')
 
 #Get T_sky information from Joe's file
 sky_file = '/users/amcewen/GBNCC_work/skytemp.dat'
@@ -357,14 +289,8 @@ name_short = []
 if proc_psr == True:
     print "Checking S/N for profiles, with threshold = %.1f" %snr_min
 
-#beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
 
 # Find observations and, optionally, process with PRESTO
-# For single object use:
-#for beam in beam_num[lim]:
-# For multi-object use:
-
-#for beams_psr, name_psr in zip(beam_all_psr,name_all_psr[north][good_beams]):
 for psr in pulsar_list:
     print ""
     print ""
@@ -373,16 +299,6 @@ for psr in pulsar_list:
     if 'proc' in args:
 	proc_psr = True   # Check and correct processing state
     MJD_psr = 10000    # random number
-#    if 'file' in args:   # Multi-object use
-#	params = (name_all_psr[north] == name_psr)
-#	num_psr = num_all_psr[north][params][0]
-#	ra_psr = ra_all_psr[north][params][0]
-#	psr.dec = dec_all_psr[north][params][0]
-#	p0_psr = p0_all_psr[north][params][0]
-#	p0_short = int(p0_psr*100000 + 0.499)/100.
-#	pd_psr = pd_all_psr[north][params][0]
-#	dm_psr = dm_all_psr[north][params][0]
-#	stat_psr = stat_all_psr[name_all_psr == name_psr][0]
     if psr.name[0] == "C": #or stat_psr == 'L' or stat_psr == 'G':
 	unpub_psr = True
     else:
@@ -444,7 +360,7 @@ for psr in pulsar_list:
 		    # Process files to find detections
 		    if proc_psr == True:
 			if os.getcwd() != work_dir+'%s_temp' %psr.name:
-			    if not os.path.isdir(work_dir+'%s_temp' %psr.name): #len(glob(work_dir+'%s_temp' %psr.name)) == 0:
+			    if not os.path.isdir(work_dir+'%s_temp' %psr.name): 
 				os.chdir(work_dir)
 				os.mkdir(psr.name+'_temp')
 			    os.chdir(work_dir+'%s_temp/' %psr.name)
@@ -467,39 +383,51 @@ for psr in pulsar_list:
 			    rfi_opt = " -zapchan 2470:3270"
 			else:
 			    rfi_opt = " "
-			if not os.path.isfile(glob('*_%s_rfifind.mask' %beam_cand.num)[0]) or \
-			   len(glob('/users/amcewen/GBNCC_work/tar_test/*/*GBNCC%s*rfifind.mask' %beam_cand.num))==0 or \
-			   (len(glob('*%s*.bestprof' %beam_cand.num)) == 0 and
-			    len(glob('*%s_*.stats' %beam_cand.num)) == 0): 						#add untar business here
-			    rfi_other = glob(work_dir+'*/*_%s_rfifind.stats' %beam_cand.num)
-			    for blah in rfi_other:
-				if blah.split('/')[-2] != psr.name+'_temp':
-				    if len(glob("%s_%s_rfifind.mask" %(psr.name,beam_cand.num))) > 0:
-					# Avoid having multiple mask files 
-					sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
-				    # Save time on rfifind 
-				    sproc.call('cp -s %s.* .' %blah.split('.')[0], shell=True) 
-				    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
-				    if len(rfi_othertxt) > 0:
-					sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
-				    break
-			    if len(glob('*_%s_rfifind.stats' %beam_cand.num)) == 0:
-				print "Running rfifind for %s..." %psr.name
-				rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
-				rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
-					      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam))
-				p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
-						%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam),
-						stdout=rfi_out, shell=True)
-				p.wait()
-				rfi_out.flush()
-				rfi_out.close()
-				del p
-			if os.path.isfile(glob('*_%s_rfifind.mask' %beam_cand.num)[0]):
-				beam_cand.add_mask(glob('*_%s_rfifind.mask' %beam_cand.num)[0])
-			elif os.path.isfile(glob('/users/amcewen/GBNCC_work/tar_test/*/*GBNCC%s*rfifind.mask' %beam_cand.num)[0]):
-				beam_cand.add_mask(glob('/users/amcewen/GBNCC_work/tar_test/*/*GBNCC%s*rfifind.mask' %beam_cand.num)[0])
-			if os.path.isfile(glob('rfifind_%s_output.txt' %beam_cand.num)[0]):
+			if not os.path.isfile('*/*%s*rfifind.mask' %beam_cand.num) or not os.path.isfile('*/*%s*rfifind.stats' %beam_cand.num):
+			    if len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num))==0 or len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.stats' %beam_cand.num))==0:
+			    	    mask_dir=glob(data_dir+'20*/*GBNCC%s*' %beam_cand.num)[0].split('/')[5] 
+				    if os.path.isfile(glob(data_dir+mask_dir+'/*rfi*tar*')[0]):
+					print "untarring mask file"
+					os.chdir(data_dir+'amcewen/mask_files/')
+					tar_file=glob('../../'+mask_dir+'/*rfi*tar*')[0]
+					if not os.path.isfile(glob('*%s*rfifind.mask' %beam_cand.num)):
+						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
+					if not os.path.isfile(glob('*%s*rfifind.stats' %beam_cand.num)):
+						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.stats', shell=True)
+					sproc.call('cp *GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
+					sproc.call('cp *GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
+					os.chdir(work_dir+'%s_temp' %psr.name)
+				    else:
+					rfi_other = glob(work_dir+'*/*_%s_rfifind.stats' %beam_cand.num)
+					for blah in rfi_other:
+					    if blah.split('/')[-2] != psr.name+'_temp':
+					        if len(glob("%s_%s_rfifind.mask" %(psr.name,beam_cand.num))) > 0:
+						    # Avoid having multiple mask files 
+					       	    sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
+						    # Save time on rfifind 
+						    sproc.call('cp -s %s.* .' %blah.split('.')[0], shell=True) 
+						    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
+						    if len(rfi_othertxt) > 0:
+							sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
+						    break
+					    if len(glob('*_%s_rfifind.stats' %beam_cand.num)) == 0:
+						print "Running rfifind for %s..." %psr.name
+						rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
+						rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
+							      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam))
+						p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
+								%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam),
+								stdout=rfi_out, shell=True)
+						p.wait()
+						rfi_out.flush()
+						rfi_out.close()
+						del p
+			    else:
+				    mask_str=glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num)[0]
+				    sproc.call('cp %s .' %mask_str,shell=True)
+			mask_file=glob('*GBNCC%s*rfifind.mask' %beam_cand.num)[0]				#this is probably where a multi-mask change is needed
+			beam_cand.add_mask(mask_file)
+			if os.path.isfile('rfifind_%s_output.txt' %beam_cand.num):
 			    B = sproc.Popen(["grep 'good' rfifind_%s_output.txt | awk '{ print $6 }'"
 					     %beam_cand.num],stdout=sproc.PIPE,shell=True).communicate()[0]
 			    if B == '' and MJD_beam < 56710:
@@ -532,8 +460,8 @@ for psr in pulsar_list:
 				   %(nbinx, nsub, nintx, raw_opt, beam_cand.mask, file_beam)
 			if len(glob('guppi*%s*.pfd.bestprof' %beam_cand.num))==0 and proc_psr and not unpub_psr:
 			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
-			    fold_out.write("prepfold -psr %s %s %s"%(psr.name[1:],flag_search,prep_str))
-			    p = sproc.Popen("prepfold -psr %s %s %s" %(psr.name[1:],flag_search,
+			    fold_out.write("prepfold -psr %s %s %s"%(psr.name,flag_search,prep_str))
+			    p = sproc.Popen("prepfold -psr %s %s %s" %(psr.name,flag_search,
 							    prep_str),shell=True,stdout=fold_out)
 			    p.wait()
 			    fold_out.flush()
@@ -711,7 +639,7 @@ for psr in pulsar_list:
 				    exptd = "Unexpected"
 				else:
 				    exptd = "Expected"
-				print "PSR %s not detected in beam #%d; S/N < %.1f: %s" \
+				print "PSR %s not detected in beam #%s; S/N < %.1f: %s" \
 				    %(psr.name, beam_cand.num, snr_min, exptd)
 			os.chdir(work_dir)
 		    else:
