@@ -34,7 +34,7 @@ import numpy as np
 import sys, os
 from glob import glob
 import subprocess as sproc
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from time import strftime
 import argparse as ap
 import astropy.coordinates as coord
@@ -383,16 +383,20 @@ for psr in pulsar_list:
 			    rfi_opt = " -zapchan 2470:3270"
 			else:
 			    rfi_opt = " "
-			if not os.path.isfile('*%s*rfifind.mask' %beam_cand.num):
-			    if len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num))==0:
+			if not os.path.isfile('*/*%s*rfifind.mask' %beam_cand.num) or not os.path.isfile('*/*%s*rfifind.stats' %beam_cand.num):
+			    if len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num))==0 or len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.stats' %beam_cand.num))==0:
 			    	    mask_dir=glob(data_dir+'20*/*GBNCC%s*' %beam_cand.num)[0].split('/')[5] 
 				    if os.path.isfile(glob(data_dir+mask_dir+'/*rfi*tar*')[0]):
 					print "untarring mask file"
 					os.chdir(data_dir+'amcewen/mask_files/')
 					tar_file=glob('../../'+mask_dir+'/*rfi*tar*')[0]
-					sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
-					sproc.call('cp *GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.num,work_dir,psr.name))
-					os.chdir(work_dir+'*%s*' %psr.name)
+					if not os.path.isfile(glob('*%s*rfifind.mask' %beam_cand.num)):
+						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
+					if not os.path.isfile(glob('*%s*rfifind.stats' %beam_cand.num)):
+						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.stats', shell=True)
+					sproc.call('cp *GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
+					sproc.call('cp *GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
+					os.chdir(work_dir+'%s_temp' %psr.name)
 				    else:
 					rfi_other = glob(work_dir+'*/*_%s_rfifind.stats' %beam_cand.num)
 					for blah in rfi_other:
@@ -420,9 +424,8 @@ for psr in pulsar_list:
 						del p
 			    else:
 				    mask_str=glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num)[0]
-				    print mask_str
-				    sproc.call('cp %s ./' %mask_str)
-			mask_file=glob('*GBNCC%s*rfifind.mask' %beam_cand.num)
+				    sproc.call('cp %s .' %mask_str,shell=True)
+			mask_file=glob('*GBNCC%s*rfifind.mask' %beam_cand.num)[0]				#this is probably where a multi-mask change is needed
 			beam_cand.add_mask(mask_file)
 			if os.path.isfile('rfifind_%s_output.txt' %beam_cand.num):
 			    B = sproc.Popen(["grep 'good' rfifind_%s_output.txt | awk '{ print $6 }'"
@@ -457,8 +460,8 @@ for psr in pulsar_list:
 				   %(nbinx, nsub, nintx, raw_opt, beam_cand.mask, file_beam)
 			if len(glob('guppi*%s*.pfd.bestprof' %beam_cand.num))==0 and proc_psr and not unpub_psr:
 			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
-			    fold_out.write("prepfold -psr %s %s %s"%(psr.name[1:],flag_search,prep_str))
-			    p = sproc.Popen("prepfold -psr %s %s %s" %(psr.name[1:],flag_search,
+			    fold_out.write("prepfold -psr %s %s %s"%(psr.name,flag_search,prep_str))
+			    p = sproc.Popen("prepfold -psr %s %s %s" %(psr.name,flag_search,
 							    prep_str),shell=True,stdout=fold_out)
 			    p.wait()
 			    fold_out.flush()
@@ -636,7 +639,7 @@ for psr in pulsar_list:
 				    exptd = "Unexpected"
 				else:
 				    exptd = "Expected"
-				print "PSR %s not detected in beam #%d; S/N < %.1f: %s" \
+				print "PSR %s not detected in beam #%s; S/N < %.1f: %s" \
 				    %(psr.name, beam_cand.num, snr_min, exptd)
 			os.chdir(work_dir)
 		    else:
