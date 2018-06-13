@@ -390,9 +390,9 @@ for psr in pulsar_list:
 					print "untarring mask file"
 					os.chdir(data_dir+'amcewen/mask_files/')
 					tar_file=glob('../../'+mask_dir+'/*rfi*tar*')[0]
-					if not os.path.isfile(glob('*%s*rfifind.mask' %beam_cand.num)):
+					if len(glob('*%s*rfifind.mask' %beam_cand.num))==0:
 						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
-					if not os.path.isfile(glob('*%s*rfifind.stats' %beam_cand.num)):
+					if len(glob('*%s*rfifind.stats' %beam_cand.num))==0:
 						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.stats', shell=True)
 					sproc.call('cp *GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
 					sproc.call('cp *GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
@@ -576,7 +576,7 @@ for psr in pulsar_list:
 				S_offset = 0.0
 				dS_offset = 0.0
 			    elif snr_beam < snr_min and snr_beam >= 0.001 and \
-			       ang_offset(ra_cand,dec_cand,psr.ra,psr.dec) >= 0.79:
+			       ang_sep >= 0.79:
 				S_offset = 100.0
 				dS_offset = 100.0
 			    #chi2_beam = np.array([((n-val.mean())/val.std())**2 for n in val]).sum()

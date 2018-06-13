@@ -3,21 +3,13 @@
 # Flux adjusted for offset from beam center
 # Expected S/N estimated from published flux values
 # Flux estimated from measured S/N, uncertainty estimated from dependencies
-# File generated 2018-06-13 13:34:41 (ET)
+# File generated 2018-06-13 16:15:53 (ET)
 #   PSRJ  	  Distance  	   MJD   	    S/N exp. 	   S/N meas. 	 Flux Estimate	 Flux Error 	  Status 
 #		    (deg)   	  (day)						     (mJy)  	   (mJy)  
+J2313+4253	 1.0000000 	  55625  	   0.030	 289.683	   87218.694    	 165.569    	Detected in Beam # 24025
+J2313+4253	 0.0000000 	  55625  	 -10.000	 -10.000	   -10.000    	  10.000    	Not Detected in # 24402
 J0815+4611	 0.6946538 	  55508  	 -10.000	 -10.000	   -10.000    	  10.000    	Not Detected in # 20741
 J0815+4611	 0.0000000 	  55508  	  -1.000	  -1.000	    -1.000    	   1.000    	Not Detected in # 21118
 J0815+4611	 1.2211537 	  55527  	  -1.000	  -1.000	    -1.000    	   1.000    	Not Detected in # 21351
-J1741-0208	 0.0000000 	  57542  	 -10.000	  11.272	     2.438    	   0.808    	Detected in Beam # 78842
-J0332+5434	 0.5877804 	  55348  	 642.331	 523.439	   1513.511    	  35.171    	Detected in Beam # 13843
-J0332+5434	 0.0000000 	  55343  	 5063.106	 322.877	   118.440    	  39.469    	Detected in Beam # 14076
-J0636+5129	 0.6293156 	  55442  	   1.656	   2.746	     3.745    	   1.193    	Not Detected in # 16301
-J0636+5129	 0.0000000 	  55442  	  17.343	   8.168	     1.064    	   0.406    	Detected in Beam # 16534
-J0636+5129	 0.6293156 	  55442  	   1.656	   0.000	     0.000    	   0.000    	Not Detected in # 16911
 # Pulsars with beams not found on zuul
 #   PSRJ  	Distance (deg)
-J0006+1834	  0.0000000  	Beam # 51331 Not Found
-J0006+1834	  0.0000000  	Beam # 51708 Not Found
-J0006+1834	  0.0000000  	Beam # 51941 Not Found
-J0006+1834	  0.0000000  	Beam # 52318 Not Found
