@@ -147,8 +147,11 @@ class Beam:
 		self.name=beam
 		self.num=beam.strip('GBNCC')
 		self.mask=''
+		self.fits=''
 	def add_mask(self,mask):
 		self.mask=mask	
+	def add_fits(self,fits):
+		self.fits=fits
 
 # Begin full program 
 args = proc_args()
@@ -331,6 +334,8 @@ for psr in pulsar_list:
 	print "PSR %s rejected due to invalid parameters" %psr.name
     if len(glob('%sparfiles/%s_short.par' %(renee_dir,psr.name)))>0:
 	psr.add_par(glob('%sparfiles/%s_short.par' %(renee_dir,psr.name))[0])
+    if len(glob(data_dir+'amcewen/binary_pars/%s*' %psr.name))>0:
+	psr.add_par(glob(data_dir+'amcewen/binary_pars/%s*' %psr.name)[0])
     if psr.par == '' and proc_psr == True and len(psr.name)>=10:
 	print "Cannot find par file in %sparfiles/" %renee_dir
     if proc_psr == True:
@@ -340,6 +345,7 @@ for psr in pulsar_list:
 	    print "Skipping new pulsar: "+psr.name
 	    continue
 	os.chdir("%s_temp/" %psr.name)
+	print psr.par
 	if not os.path.isfile('%s_short.par' %psr.name) and not psr.par == '':
 	    sproc.call('cp -s %s .' %psr.par,shell=True)
     for beam_cand in psr.beams:
@@ -354,7 +360,8 @@ for psr in pulsar_list:
 		    ra_found.append(ra_cand)
 		    dec_found.append(dec_cand)
 		    name_found.append(psr.name)
-		    dist_found.append(ang_offset(ra_cand,dec_cand,psr.ra,psr.dec))
+		    ang_sep = ang_offset(ra_cand,dec_cand,psr.ra,psr.dec)
+		    dist_found.append(ang_sep)
 		    beam_found.append(beam_cand.num)
 		    MJD_found.append(MJD_beam)
 		    # Process files to find detections
@@ -371,10 +378,10 @@ for psr in pulsar_list:
 			    print "Skipping new data"
 			    continue
 			A = sproc.Popen(["ls gu*G????%s_*fits" %beam_cand.num], stdout=sproc.PIPE, shell=True)
-			file_beam = A.communicate()[0]
-			scan_beam = int(file_beam.split('_')[3])
+			beam_cand.add_fits(A.communicate()[0])
+			scan_beam = int(beam_cand.fits.split('_')[3])
 			rfi_std = "-time 1 -timesig 2 -freqsig 3"
-			if "2bit" in file_beam and rfi_fil == True:
+			if "2bit" in beam_cand.fits and rfi_fil == True:
 			    raw_opt = " -noscales -noweights"
 			    rfi_std = "-time 1 -freqsig 3"
 			else:
@@ -383,10 +390,10 @@ for psr in pulsar_list:
 			    rfi_opt = " -zapchan 2470:3270"
 			else:
 			    rfi_opt = " "
-			if not os.path.isfile('*/*%s*rfifind.mask' %beam_cand.num) or not os.path.isfile('*/*%s*rfifind.stats' %beam_cand.num):
-			    if len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num))==0 or len(glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.stats' %beam_cand.num))==0:
+			if not os.path.isfile(work_dir+'*/*%s*rfifind.mask' %beam_cand.num) or not os.path.isfile(work_dir+'*/*%s*rfifind.stats' %beam_cand.num):
+			    if len(glob(data_dir+'amcewen/mask_files/*%s*rfifind.mask' %beam_cand.num))==0 or len(glob(data_dir+'amcewen/mask_files/*%s*rfifind.stats' %beam_cand.num))==0:
 			    	    mask_dir=glob(data_dir+'20*/*GBNCC%s*' %beam_cand.num)[0].split('/')[5] 
-				    if os.path.isfile(glob(data_dir+mask_dir+'/*rfi*tar*')[0]):
+				    if len(glob(data_dir+mask_dir+'/*rfi*tar*'))>0:
 					print "untarring mask file"
 					os.chdir(data_dir+'amcewen/mask_files/')
 					tar_file=glob('../../'+mask_dir+'/*rfi*tar*')[0]
@@ -398,14 +405,12 @@ for psr in pulsar_list:
 					sproc.call('cp *GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
 					os.chdir(work_dir+'%s_temp' %psr.name)
 				    else:
-					rfi_other = glob(work_dir+'*/*_%s_rfifind.stats' %beam_cand.num)
-					for blah in rfi_other:
-					    if blah.split('/')[-2] != psr.name+'_temp':
-					        if len(glob("%s_%s_rfifind.mask" %(psr.name,beam_cand.num))) > 0:
+					for blah in psr.beams:
+					    if len(glob("%s_%s_rfifind.mask" %(psr.name,beam_cand.num))) > 0:
 						    # Avoid having multiple mask files 
 					       	    sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
 						    # Save time on rfifind 
-						    sproc.call('cp -s %s.* .' %blah.split('.')[0], shell=True) 
+						    sproc.call('cp -s *%s* .' %beam_cand.name, shell=True) 
 						    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
 						    if len(rfi_othertxt) > 0:
 							sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
@@ -414,18 +419,21 @@ for psr in pulsar_list:
 						print "Running rfifind for %s..." %psr.name
 						rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
 						rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
-							      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam))
+							      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits))
 						p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
-								%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,file_beam),
+								%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits),
 								stdout=rfi_out, shell=True)
 						p.wait()
 						rfi_out.flush()
 						rfi_out.close()
 						del p
+						sproc.call('cp *%s*d.mask /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True)
+                                                sproc.call('cp *%s*d.stats /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True) 
 			    else:
-				    mask_str=glob(data_dir+'amcewen/mask_files/*GBNCC%s*rfifind.mask' %beam_cand.num)[0]
+				    mask_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.mask' %beam_cand.num)[0]
 				    sproc.call('cp %s .' %mask_str,shell=True)
-			mask_file=glob('*GBNCC%s*rfifind.mask' %beam_cand.num)[0]				#this is probably where a multi-mask change is needed
+			print os.getcwd()
+			mask_file=glob('*%s*rfifind.mask' %beam_cand.num)[0]				#this is probably where a multi-mask change is needed
 			beam_cand.add_mask(mask_file)
 			if os.path.isfile('rfifind_%s_output.txt' %beam_cand.num):
 			    B = sproc.Popen(["grep 'good' rfifind_%s_output.txt | awk '{ print $6 }'"
@@ -457,16 +465,16 @@ for psr in pulsar_list:
 			elif psr.p0 < 3.5e-3 and nbin > 30:
 			    nbinx = 30
 			prep_str = "-n %d -nsub %d -npart %d -fine%s -mask %s -noxwin %s" \
-				   %(nbinx, nsub, nintx, raw_opt, beam_cand.mask, file_beam)
-			if len(glob('guppi*%s*.pfd.bestprof' %beam_cand.num))==0 and proc_psr and not unpub_psr:
-			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
-			    fold_out.write("prepfold -psr %s %s %s"%(psr.name,flag_search,prep_str))
-			    p = sproc.Popen("prepfold -psr %s %s %s" %(psr.name,flag_search,
-							    prep_str),shell=True,stdout=fold_out)
-			    p.wait()
-			    fold_out.flush()
-			    fold_out.close()
-			    del p
+				   %(nbinx, nsub, nintx, raw_opt, beam_cand.mask, beam_cand.fits)
+#			if len(glob('guppi*%s*.pfd.bestprof' %beam_cand.num))==0 and proc_psr and not unpub_psr:
+#			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
+#			    fold_out.write("prepfold -psr %s %s %s"%(psr.name,flag_search,prep_str))
+#			    p = sproc.Popen("prepfold -psr %s %s %s" %(psr.name,flag_search,
+#							    prep_str),shell=True,stdout=fold_out)
+#			    p.wait()
+#			    fold_out.flush()
+#			    fold_out.close()
+#			    del p
 			prof_cand = glob('guppi*%s*.pfd.bestprof' %beam_cand.num)
 			if len(prof_cand) == 0 and proc_psr == True and not psr.par == '':
 			    print "Attempting to fold %s with par file..." %psr.name
@@ -506,7 +514,7 @@ for psr in pulsar_list:
 			    dS_found.append(10.0)
 			else:
 			    # Cut extra RFI "manually"
-			    if int(file_beam.split("_")[1]) > 56710 and rfi_fil == True \
+			    if int(beam_cand.fits.split("_")[1]) > 56710 and rfi_fil == True \
 			       and len(glob('prepfold_%s_*txt')) > 0:
 				p = sproc.Popen("tail -4 prepfold_%s_*txt | head -1" %beam_cand.num,
 						shell=True,stdout=sproc.PIPE).communicate()[0]
@@ -514,7 +522,7 @@ for psr in pulsar_list:
 				    print "Removing extra RFI"
 				    pfd_out = open("show_pfd_%s_output.txt" %beam_cand.num,'w')
 				    p = sproc.Popen('show_pfd -killsubs 63,77:102 -noxwin %s*pfd'
-						%file_beam.split('.')[0],shell=True,stdout=pfd_out)
+						%beam_cand.fits.split('.')[0],shell=True,stdout=pfd_out)
 				    p.wait()
 				    pfd_out.flush()
 				    pfd_out.close()
@@ -552,7 +560,6 @@ for psr in pulsar_list:
 				
 			    P = len(val)+0.0
 			    sig = val[lim].std()
-			    ang_sep = ang_offset(ra_cand,dec_cand,psr.ra,psr.dec)
 			    lim_flux = psr_flux == psr.name
 			    if (not psr.name in psr_flux) or s350_flux[lim_flux][0]<=0:
 				snr_exp = -10.0
