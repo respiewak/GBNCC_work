@@ -202,15 +202,18 @@ t=Table.read('GBNCC_pointings.fits')
 ra_pointings=np.array(t['RAdeg'])
 dec_pointings=np.array(t['Decdeg'])
 
-
 num_north=0
 
 # Check file information (assumes order of data in file)
 if not file_psr is None:
     pulsar_list=[]
-    for i in range(len(np.genfromtxt('test.dat',usecols=[0]))):
-        pulsar_list.append(Pulsar(np.genfromtxt('test.dat',dtype=[('f0', 'S10'), ('f1', '<f8'), ('f2', '<f8'), ('f3', '<f8'), ('f4', '<f8'), ('f5', '<f8')],usecols=[1,2,3,4,5,6])[i]))    #note: this fails if input file has only one line
-	num_north+=int(pulsar_list[i].north)
+    try:
+	for i in range(len(np.genfromtxt(file_psr,usecols=[0]))):
+	    pulsar_list.append(Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','<f8','S10')},usecols=[1,2,3,4,5,6])[i]))    #note: this fails if input file has only one line
+	    num_north+=int(pulsar_list[i].north)
+    except:
+	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','<f8','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
+	num_north+=int(pulsar_list[0].north)
     print "%d/%d pulsars in survey area. Finding closest beams..." %(num_north,len(pulsar_list))
     beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
     p_coord=[]
@@ -348,7 +351,6 @@ for psr in pulsar_list:
 	if not os.path.isfile('%s_short.par' %psr.name) and not psr.par == '':
 	    sproc.call('cp -sf %s .' %psr.par,shell=True)
     for beam_cand in psr.beams:
-		print beam_cand.name
 		if (psr.dm > 0 and psr.p0 > 0) and '-proc' in args:
 		    proc_psr = True
 		fits_list = glob('%s*/gu*G????%s_*fits' %(data_dir,beam_cand.num))
@@ -395,39 +397,38 @@ for psr in pulsar_list:
 				    if len(glob(data_dir+mask_dir+'/*rfi*tar*'))>0:
 					print "untarring mask file"
 					os.chdir(data_dir+'amcewen/mask_files/')
-					tar_file=glob('../../'+mask_dir+'/*rfi*tar*')[0]
-					if len(glob('*%s*rfifind.mask' %beam_cand.num))==0:
-						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
-					if len(glob('*%s*rfifind.stats' %beam_cand.num))==0:
-						sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.stats', shell=True)
+					for tar_file in glob(data_dir+mask_dir+'/*rfi*tar*'):
+						if len(glob('*%s*rfifind.mask' %beam_cand.num))==0:
+							sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
+						if len(glob('*%s*rfifind.stats' %beam_cand.num))==0:
+							sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.stats', shell=True)
 					sproc.call('cp *GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
 					sproc.call('cp *GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
 					os.chdir(work_dir+'%s_temp' %psr.name)
 				    else:
-					    print "herer"
-					    if len(glob("*%s_rfifind.mask" %(beam_cand.num))) > 0:
-						    # Avoid having multiple mask files 
-					       	    sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
-						    # Save time on rfifind 
-						    #sproc.call('cp -s *%s* .' %beam_cand.name, shell=True) 			#check old code for this
-						    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
-						    if len(rfi_othertxt) > 0:
-							sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
-						    break
-					    if len(glob('*_%s_rfifind.stats' %beam_cand.num)) == 0:
-						print "Running rfifind for %s..." %psr.name
-						rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
-						rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
-							      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits))
-						p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
-								%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits),
-								stdout=rfi_out, shell=True)
-						p.wait()
-						rfi_out.flush()
-						rfi_out.close()
-						del p
-					    sproc.call('cp *%s*d.mask /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True)
-                                            sproc.call('cp *%s*d.stats /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True) 
+    			       	        if len(glob("*%s_rfifind.mask" %(beam_cand.num))) > 0:
+					    # Avoid having multiple mask files 
+					    sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
+					    # Save time on rfifind 
+					    #sproc.call('cp -s *%s* .' %beam_cand.name, shell=True) 			#check old code for this
+					    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
+					    if len(rfi_othertxt) > 0:
+						sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
+					    break
+				        if len(glob('*_%s_rfifind.stats' %beam_cand.num)) == 0:
+					    print "Running rfifind for %s..." %psr.name
+					    rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
+					    rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
+						      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits))
+					    p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
+							%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits),
+							stdout=rfi_out, shell=True)
+					    p.wait()
+					    rfi_out.flush()
+					    rfi_out.close()
+					    del p
+				    sproc.call('cp *%s*d.mask /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True)
+				    sproc.call('cp *%s*d.stats /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True) 
 			    else:
 				    mask_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.mask' %(beam_cand.num))[0]
 				    stats_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.stats' %(beam_cand.num))[0]
@@ -496,10 +497,17 @@ for psr in pulsar_list:
 			    if os.path.isfile("prepfold_%s_output.txt"%beam_cand.num):
 				sproc.call("rm prepfold_%s_output.txt"%beam_cand.num, shell=True)
 			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
-			    fold_out.write("prepfold -p %.11f -pd %.2e -dm %.3f %s %s" 
-					   %(psr.p0, psr.p1, psr.dm, flag_search, prep_str))
-			    p = sproc.Popen("prepfold -p %.11f -pd %.2e -dm %.3f %s %s" 
-					    %(psr.p0, psr.p1, psr.dm, flag_search, prep_str), 
+			    prepfold_parameters="prepfold "
+			    if str(psr.p0) != "nan":
+				prepfold_parameters=prepfold_parameters+"-p %.11f " %psr.p0
+			    if str(psr.p1) != "nan":
+				prepfold_parameters=prepfold_parameters+"-pd %.2e " %psr.p1
+			    if str(psr.dm) != "nan":
+				prepfold_parameters=prepfold_parameters+"-dm %.3f " %psr.dm
+			    fold_out.write(prepfold_parameters+" %s %s" 
+					   %(flag_search, prep_str))
+			    p = sproc.Popen(prepfold_parameters+" %s %s" 
+					    %(flag_search, prep_str), 
 					    shell=True,stdout=fold_out)
 			    p.wait()
 			    fold_out.flush()
