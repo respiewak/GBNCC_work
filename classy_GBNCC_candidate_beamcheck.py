@@ -345,9 +345,8 @@ for psr in pulsar_list:
 	    print "Skipping new pulsar: "+psr.name
 	    continue
 	os.chdir("%s_temp/" %psr.name)
-	print psr.par
 	if not os.path.isfile('%s_short.par' %psr.name) and not psr.par == '':
-	    sproc.call('cp -s %s .' %psr.par,shell=True)
+	    sproc.call('cp -sf %s .' %psr.par,shell=True)
     for beam_cand in psr.beams:
 		print beam_cand.name
 		if (psr.dm > 0 and psr.p0 > 0) and '-proc' in args:
@@ -405,12 +404,12 @@ for psr in pulsar_list:
 					sproc.call('cp *GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
 					os.chdir(work_dir+'%s_temp' %psr.name)
 				    else:
-					for blah in psr.beams:
-					    if len(glob("%s_%s_rfifind.mask" %(psr.name,beam_cand.num))) > 0:
+					    print "herer"
+					    if len(glob("*%s_rfifind.mask" %(beam_cand.num))) > 0:
 						    # Avoid having multiple mask files 
 					       	    sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
 						    # Save time on rfifind 
-						    sproc.call('cp -s *%s* .' %beam_cand.name, shell=True) 
+						    #sproc.call('cp -s *%s* .' %beam_cand.name, shell=True) 			#check old code for this
 						    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
 						    if len(rfi_othertxt) > 0:
 							sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
@@ -427,12 +426,13 @@ for psr in pulsar_list:
 						rfi_out.flush()
 						rfi_out.close()
 						del p
-						sproc.call('cp *%s*d.mask /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True)
-                                                sproc.call('cp *%s*d.stats /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True) 
+					    sproc.call('cp *%s*d.mask /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True)
+                                            sproc.call('cp *%s*d.stats /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True) 
 			    else:
-				    mask_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.mask' %beam_cand.num)[0]
+				    mask_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.mask' %(beam_cand.num))[0]
+				    stats_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.stats' %(beam_cand.num))[0]
 				    sproc.call('cp %s .' %mask_str,shell=True)
-			print os.getcwd()
+				    sproc.call('cp %s .' %stats_str,shell=True)
 			mask_file=glob('*%s*rfifind.mask' %beam_cand.num)[0]				#this is probably where a multi-mask change is needed
 			beam_cand.add_mask(mask_file)
 			if os.path.isfile('rfifind_%s_output.txt' %beam_cand.num):
@@ -631,14 +631,14 @@ for psr in pulsar_list:
 				    os.chdir("%s%s_temp" %(work_dir,psr.name))
 				if use_comp == 'zuul' and \
 				       not os.path.isfile("%s%s*" %(renee_dir,pfd_str)):
-				    os.chdir("%sdetection_plots/" %renee_dir)
-				    sproc.call("cp -fs %s%s* ." %(work_dir,pfd_str), shell=True)
+				    os.chdir("%sdetection_plots/" %work_dir)
+				    sproc.call("ln -fs %s%s_temp/*%s*pfd ." %(work_dir,psr.name,beam_cand.num), shell=True)          #getting error here. whyyyyyyy?
 				    os.chdir("%s%s_temp" %(work_dir,psr.name))
 				elif use_comp == 'GB' and len(glob("%s%s*" %(renee_dir,pfd_str))) == 0:
 				    sproc.call("cp  gu*%s_%s*ps %sdetection_plots/"
-					       %(beam_cand.num,psr.name,renee_dir), shell=True)
+					       %(beam_cand.num,psr.name,work_dir), shell=True)
 				    sproc.call("cp  gu*%s_%s*prof %sdetection_plots/"
-					       %(beam_cand.num,psr.name,renee_dir), shell=True)
+					       %(beam_cand.num,psr.name,work_dir), shell=True)
 			    else:
 				if snr_exp <= 0:
 				    exptd = "Unknown exp. : %d" %snr_exp
