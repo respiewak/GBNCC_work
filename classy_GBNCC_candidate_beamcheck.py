@@ -13,7 +13,7 @@
 # -p          period in s
 # -pd         period derivative in s/s (default: 0)
 # -dm         DM in pc/cc
-# -f          file name (assumes file has columns of NUMBER, JNAME, RA (deg), DEC (deg), P0 (s), P1 (s/s), DM (cm^-3))
+# -f          file name (assumes file has columns of NUMBER, JNAME, RA (deg), DEC (deg), P0 (s), P1 (s/s), DM (cm^-3); include * in unknown ranges)
 # -beam       beam number as integer
 # -n          number of profile bins (default: 50)
 # -nsub       number of channels (default: 128) 
@@ -152,6 +152,7 @@ class Beam:
 		self.mask=mask	
 	def add_fits(self,fits):
 		self.fits=fits
+		self.mjd=self.fits.split('_')[1]
 
 # Begin full program 
 args = proc_args()
@@ -175,6 +176,9 @@ pull_new = args["pull_new"]
 if "ra_psr" in args:
     ra_psr = args["ra_psr"]
     dec_psr = args["dec_psr"]
+    psr=str(coord.SkyCoord(ra_psr,dec_psr,unit=('hourangle','deg')).to_string('hmsdms').strip('s'))
+    psr_name = "J%s%s%s%s" %(psr.split()[0].split('h')[0], psr.split()[0].split('h')[1].split('m')[0], psr.split()[1].split('d')[0], psr.split()[1].split('d')[1].split('m')[0])
+
 
 renee_dir = "/users/rspiewak/pulsars/"
 if "out" in args:
@@ -203,26 +207,45 @@ ra_pointings=np.array(t['RAdeg'])
 dec_pointings=np.array(t['Decdeg'])
 
 num_north=0
+beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
+pulsar_list=[]
 
 # Check file information (assumes order of data in file)
 if not file_psr is None:
-    pulsar_list=[]
+    p_coord=[]
     try:
-	for i in range(len(np.genfromtxt(file_psr,usecols=[0]))):
-	    pulsar_list.append(Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','<f8','S10')},usecols=[1,2,3,4,5,6])[i]))    #note: this fails if input file has only one line
-	    num_north+=int(pulsar_list[i].north)
+        for i in range(len(np.genfromtxt(file_psr,usecols=[0]))):
+            pulsar_list.append(Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[i]))   
+            num_north+=int(pulsar_list[i].north)
     except:
-	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','<f8','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
+	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
 	num_north+=int(pulsar_list[0].north)
     print "%d/%d pulsars in survey area. Finding closest beams..." %(num_north,len(pulsar_list))
-    beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
-    p_coord=[]
+    if num_north==0:
+	exit()
     for psr in pulsar_list:
 	p_coord.append(coord.SkyCoord(psr.ra,psr.dec,unit=('deg','deg')))
     for i in range(len(pulsar_list)):
 	for j in range(len(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'])):
-		if pulsar_list[i].north and not int(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j].strip('GBNCC')) in beam_rejects:
-			pulsar_list[i].add_beam(Beam(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j]))
+	    if pulsar_list[i].north and not int(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j].strip('GBNCC')) in beam_rejects:
+		pulsar_list[i].add_beam(Beam(t[p_coord[i].separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j]))
+# If no file is given, read pulsar from input parameters
+else:
+    pulsar=Pulsar((psr_name,ra_psr,dec_psr,p0_psr,pd_psr,dm_psr))
+    num_north+=int(pulsar.north)
+    if num_north==1:
+	print "%s in survey area. Finding closest beams..." %psr_name
+    else:
+	print "%s not in survey area." %psr_name
+    p_coord=coord.SkyCoord(pulsar.ra,pulsar.dec,unit=('deg','deg'))
+    if "beam" not in args:
+	for j in range(len(t[p_coord.separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'])):
+	    if pulsar.north and not int(t[p_coord.separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j].strip('GBNCC')) in beam_rejects:
+		pulsar.add_beam(Beam(t[p_coord.separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<0.5*u.deg]['pointing'][j]))
+    else:
+	if pulsar.north and not int(beam_psr) in beam_rejects:
+	    pulsar.add_beam(Beam(beam_psr)) 
+    pulsar_list.append(pulsar)
 
 #Get T_sky information from Joe's file
 sky_file = '/users/amcewen/GBNCC_work/skytemp.dat'
@@ -351,6 +374,7 @@ for psr in pulsar_list:
 	if not os.path.isfile('%s_short.par' %psr.name) and not psr.par == '':
 	    sproc.call('cp -sf %s .' %psr.par,shell=True)
     for beam_cand in psr.beams:
+		print beam_cand.num
 		if (psr.dm > 0 and psr.p0 > 0) and '-proc' in args:
 		    proc_psr = True
 		fits_list = glob('%s*/gu*G????%s_*fits' %(data_dir,beam_cand.num))
@@ -391,54 +415,55 @@ for psr in pulsar_list:
 			    rfi_opt = " -zapchan 2470:3270"
 			else:
 			    rfi_opt = " "
-			if not os.path.isfile(work_dir+'*/*%s*rfifind.mask' %beam_cand.num) or not os.path.isfile(work_dir+'*/*%s*rfifind.stats' %beam_cand.num):
-			    if len(glob(data_dir+'amcewen/mask_files/*%s*rfifind.mask' %beam_cand.num))==0 or len(glob(data_dir+'amcewen/mask_files/*%s*rfifind.stats' %beam_cand.num))==0:
-			    	    mask_dir=glob(data_dir+'20*/*GBNCC%s*' %beam_cand.num)[0].split('/')[5] 
+			if not os.path.isfile(work_dir+'*/*%s*%s*rfifind.mask' %(beam_cand.mjd,beam_cand.num)) or not os.path.isfile(work_dir+'*/*%s*%s*rfifind.stats' %(beam_cand.mjd,beam_cand.num)):
+			    if len(glob(data_dir+'amcewen/mask_files/*%s*%s*rfifind.mask' %(beam_cand.mjd,beam_cand.num)))==0 or len(glob(data_dir+'amcewen/mask_files/*%s*%s*rfifind.stats' %(beam_cand.mjd,beam_cand.num)))==0:
+			    	    mask_dir=glob(data_dir+'20*/*%s*GBNCC%s*' %(beam_cand.mjd,beam_cand.num))[0].split('/')[5] 
 				    if len(glob(data_dir+mask_dir+'/*rfi*tar*'))>0:
 					print "untarring mask file"
 					os.chdir(data_dir+'amcewen/mask_files/')
 					for tar_file in glob(data_dir+mask_dir+'/*rfi*tar*'):
-						if len(glob('*%s*rfifind.mask' %beam_cand.num))==0:
+						if len(glob('*%s*%s*rfifind.mask' %(beam_cand.mjd,beam_cand.num)))==0:
 							sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.mask', shell=True)
-						if len(glob('*%s*rfifind.stats' %beam_cand.num))==0:
+						if len(glob('*%s*%s*rfifind.stats' %(beam_cand.mjd,beam_cand.num)))==0:
 							sproc.call('tar -xf '+tar_file+' \*GBNCC\*d.stats', shell=True)
-					sproc.call('cp *GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
-					sproc.call('cp *GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.num,work_dir,psr.name),shell=True)
+					sproc.call('cp *%s*GBNCC%s*rfifind.mask %s*%s*/' %(beam_cand.mjd,beam_cand.num,work_dir,psr.name),shell=True)
+					sproc.call('cp *%s*GBNCC%s*rfifind.stats %s*%s*/' %(beam_cand.mjd,beam_cand.num,work_dir,psr.name),shell=True)
 					os.chdir(work_dir+'%s_temp' %psr.name)
 				    else:
-    			       	        if len(glob("*%s_rfifind.mask" %(beam_cand.num))) > 0:
+    			       	        if len(glob("*%s*%s_rfifind.mask" %(beam_cand.mjd,beam_cand.num))) > 0:
 					    # Avoid having multiple mask files 
-					    sproc.call('rm %s_%s*.mask' %(psr.name, beam_cand.num), shell=True)  
+					    sproc.call('rm %s_%s_%s*.mask' %(psr.name, beam_cand.mjd, beam_cand.num), shell=True)  
 					    # Save time on rfifind 
 					    #sproc.call('cp -s *%s* .' %beam_cand.name, shell=True) 			#check old code for this
-					    rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
-					    if len(rfi_othertxt) > 0:
-						sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
-					    break
-				        if len(glob('*_%s_rfifind.stats' %beam_cand.num)) == 0:
-					    print "Running rfifind for %s..." %psr.name
-					    rfi_out = open('rfifind_%s_output.txt' %beam_cand.num,'w')
-					    rfi_out.write("nice rfifind %s%s%s -o %s_%s %s"
-						      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits))
-					    p = sproc.Popen("nice rfifind %s%s%s -o %s_%s %s"
-							%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.num,beam_cand.fits),
+					    #rfi_othertxt = glob(work_dir+'*/rfifi*%s_*txt' %beam_cand.num)
+					    #if len(rfi_othertxt) > 0:
+					    #    sproc.call('cp -s %s .' %rfi_othertxt[0], shell=True)
+					    #break
+				        if len(glob('*_%s_%s_rfifind.stats' %(beam_cand.mjd,beam_cand.num))) == 0 or len(glob('*_%s_%s_rfifind.mask' %(beam_cand.mjd,beam_cand.num))) == 0:
+					    print "Running rfifind for %s beam candidate %s..." %(psr.name,beam_cand.num)
+					    rfi_out = open('rfifind_%s_%s_output.txt' %(beam_cand.mjd,beam_cand.num),'w')
+					    rfi_out.write("nice rfifind %s%s%s -o %s_%s_%s %s"
+						      %(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.mjd,beam_cand.num,beam_cand.fits))
+					    p = sproc.Popen("nice rfifind %s%s%s -o %s_%s_%s %s"
+							%(rfi_std,raw_opt,rfi_opt,psr.name,beam_cand.mjd,beam_cand.num,beam_cand.fits),
 							stdout=rfi_out, shell=True)
 					    p.wait()
 					    rfi_out.flush()
 					    rfi_out.close()
 					    del p
-				    sproc.call('cp *%s*d.mask /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True)
-				    sproc.call('cp *%s*d.stats /lustre/cv/projects/GBNCC/amcewen/mask_files/' %beam_cand.num, shell=True) 
+					    sproc.call('rm *.bytemask *.inf *d.ps *.rfi', shell=True)
+				    sproc.call('cp *%s*%s_*d.mask /lustre/cv/projects/GBNCC/amcewen/mask_files/' %(beam_cand.mjd,beam_cand.num), shell=True)
+				    sproc.call('cp *%s*%s_*d.stats /lustre/cv/projects/GBNCC/amcewen/mask_files/' %(beam_cand.mjd,beam_cand.num), shell=True) 
 			    else:
-				    mask_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.mask' %(beam_cand.num))[0]
-				    stats_str=glob(data_dir+'amcewen/mask_files/*%s*rfifind.stats' %(beam_cand.num))[0]
+				    mask_str=glob(data_dir+'amcewen/mask_files/*%s*%s_*rfifind.mask' %(beam_cand.mjd,beam_cand.num))[0]
+				    stats_str=glob(data_dir+'amcewen/mask_files/*%s*%s_*rfifind.stats' %(beam_cand.mjd,beam_cand.num))[0]
 				    sproc.call('cp %s .' %mask_str,shell=True)
 				    sproc.call('cp %s .' %stats_str,shell=True)
-			mask_file=glob('*%s*rfifind.mask' %beam_cand.num)[0]				#this is probably where a multi-mask change is needed
+			mask_file=glob('*%s*%s*rfifind.mask' %(beam_cand.mjd,beam_cand.num))[0]				
 			beam_cand.add_mask(mask_file)
-			if os.path.isfile('rfifind_%s_output.txt' %beam_cand.num):
-			    B = sproc.Popen(["grep 'good' rfifind_%s_output.txt | awk '{ print $6 }'"
-					     %beam_cand.num],stdout=sproc.PIPE,shell=True).communicate()[0]
+			if os.path.isfile('rfifind_%s_%s_output.txt' %(beam_cand.mjd,beam_cand.num)):
+			    B = sproc.Popen(["grep 'good' rfifind_%s_%s_output.txt | awk '{ print $6 }'"
+					     %(beam_cand.mjd,beam_cand.num)],stdout=sproc.PIPE,shell=True).communicate()[0]
 			    if B == '' and MJD_beam < 56710:
 				bandwidth = 90.0
 			    elif B == "" and MJD_beam > 56710:
@@ -467,21 +492,12 @@ for psr in pulsar_list:
 			    nbinx = 30
 			prep_str = "-n %d -nsub %d -npart %d -fine%s -mask %s -noxwin %s" \
 				   %(nbinx, nsub, nintx, raw_opt, beam_cand.mask, beam_cand.fits)
-#			if len(glob('guppi*%s*.pfd.bestprof' %beam_cand.num))==0 and proc_psr and not unpub_psr:
-#			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
-#			    fold_out.write("prepfold -psr %s %s %s"%(psr.name,flag_search,prep_str))
-#			    p = sproc.Popen("prepfold -psr %s %s %s" %(psr.name,flag_search,
-#							    prep_str),shell=True,stdout=fold_out)
-#			    p.wait()
-#			    fold_out.flush()
-#			    fold_out.close()
-#			    del p
-			prof_cand = glob('guppi*%s*.pfd.bestprof' %beam_cand.num)
+			prof_cand = glob('guppi*%s*%s*.pfd.bestprof' %(beam_cand.mjd,beam_cand.num))
 			if len(prof_cand) == 0 and proc_psr == True and not psr.par == '':
 			    print "Attempting to fold %s with par file..." %psr.name
-			    if len(glob("prepfold_%s_output.txt"%beam_cand.num)) > 0:
-				sproc.call("rm prepfold_%s_output.txt"%beam_cand.num, shell=True)
-			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
+			    if len(glob("prepfold_%s_%s_output.txt"%(beam_cand.mjd,beam_cand.num))) > 0:
+				sproc.call("rm prepfold_%s_%s_output.txt"%(beam_cand.mjd,beam_cand.num), shell=True)
+			    fold_out = open('prepfold_%s_%s_output.txt' %(beam_cand.mjd,beam_cand.num),'w')
 			    fold_out.write("prepfold -par %s %s %s"%(psr.par,flag_search,prep_str))
 			    p = sproc.Popen("prepfold -par %s %s %s"%(psr.par,flag_search,prep_str), 
 					    shell=True, stdout=fold_out)
@@ -489,21 +505,19 @@ for psr in pulsar_list:
 			    fold_out.flush()
 			    fold_out.close()
 			    del p
-			    prof_cand = glob("guppi*%s*.bestprof" %beam_cand.num)
+			    prof_cand = glob("guppi*%s*%s*.bestprof" %(beam_cand.mjd,beam_cand.num))
 			if len(prof_cand) == 0 and proc_psr == True:
 			    print "Attempting to fold %s with simple parameters..." %psr.name
 			    if psr.p0 < 0.1 or len(psr.name) < 10:
 				flag_search = "-nodmsearch"
-			    if os.path.isfile("prepfold_%s_output.txt"%beam_cand.num):
-				sproc.call("rm prepfold_%s_output.txt"%beam_cand.num, shell=True)
-			    fold_out = open('prepfold_%s_output.txt' %beam_cand.num,'w')
-			    prepfold_parameters="prepfold "
-			    if str(psr.p0) != "nan":
-				prepfold_parameters=prepfold_parameters+"-p %.11f " %psr.p0
-			    if str(psr.p1) != "nan":
-				prepfold_parameters=prepfold_parameters+"-pd %.2e " %psr.p1
-			    if str(psr.dm) != "nan":
-				prepfold_parameters=prepfold_parameters+"-dm %.3f " %psr.dm
+			    if os.path.isfile("prepfold_%s_%s_output.txt" %(beam_cand.mjd,beam_cand.num)):
+				sproc.call("rm prepfold_%s_%s_output.txt" %(beam_cand.mjd,beam_cand.num), shell=True)
+			    fold_out = open('prepfold_%s_%s_output.txt' %(beam_cand.mjd,beam_cand.num),'w')
+			    prepfold_parameters="prepfold -p %.11f " %psr.p0
+			    if psr.p1 != "*":
+				prepfold_parameters=prepfold_parameters+"-pd %.2s " %psr.p1
+			    if psr.dm != "*":
+				prepfold_parameters=prepfold_parameters+"-dm %.3s " %psr.dm
 			    fold_out.write(prepfold_parameters+" %s %s" 
 					   %(flag_search, prep_str))
 			    p = sproc.Popen(prepfold_parameters+" %s %s" 
@@ -513,7 +527,7 @@ for psr in pulsar_list:
 			    fold_out.flush()
 			    fold_out.close()
 			    del p
-			    prof_cand = glob('guppi*%s*.pfd.bestprof' %beam_cand.num)
+			    prof_cand = glob('guppi*%s*%s*.pfd.bestprof' %(beam_cand.mjd,beam_cand.num))
 			if len(prof_cand) == 0 or proc_psr == False:
 			    print "Not fully processed, skipping..."
 			    snr_e_found.append(-10.0)
@@ -524,11 +538,11 @@ for psr in pulsar_list:
 			    # Cut extra RFI "manually"
 			    if int(beam_cand.fits.split("_")[1]) > 56710 and rfi_fil == True \
 			       and len(glob('prepfold_%s_*txt')) > 0:
-				p = sproc.Popen("tail -4 prepfold_%s_*txt | head -1" %beam_cand.num,
+				p = sproc.Popen("tail -4 prepfold_%s_%s_*txt | head -1" %(beam_cand.mjd,beam_cand.num),
 						shell=True,stdout=sproc.PIPE).communicate()[0]
 				if float(p.split()[-1]) > 1.3:
 				    print "Removing extra RFI"
-				    pfd_out = open("show_pfd_%s_output.txt" %beam_cand.num,'w')
+				    pfd_out = open("show_pfd_%s_%s_output.txt" %(beam_cand.mjd,beam_cand.num),'w')
 				    p = sproc.Popen('show_pfd -killsubs 63,77:102 -noxwin %s*pfd'
 						%beam_cand.fits.split('.')[0],shell=True,stdout=pfd_out)
 				    p.wait()
@@ -536,7 +550,7 @@ for psr in pulsar_list:
 				    pfd_out.close()
 				    del p
 			    # Deal with multiple bestprof files
-			    best_prof_list = np.array(glob('gu*%s*prof' %beam_cand.num)) 
+			    best_prof_list = np.array(glob('gu*%s*%s*prof' %(beam_cand.mjd,beam_cand.num))) 
 			    if len(best_prof_list) == 1:
 				prof_file = best_prof_list[0]
 			    elif len(best_prof_list) > 1:
@@ -613,8 +627,8 @@ for psr in pulsar_list:
 				pfd_str = "detection_plots/guppi_%d_GBNCC%s_%s.pfd" \
 					  %(MJD_beam,beam_cand.num,psr.name)
 				if os.path.isfile('../%s.*' %pfd_str):
-				    if len(glob('g*%s*2bit*ps' %beam_cand.num)) > 0:
-					file_str = "%s*2bit" %beam_cand.num
+				    if len(glob('g*%s*%s*2bit*ps' %(beam_cand.mjd,beam_cand.num))) > 0:
+					file_str = "%s*%s*2bit" %(beam_cand.mjd,beam_cand.num)
 				    else:
 					file_str = beam_cand.num
 				    if len(glob('g*%s*ps'%file_str)) > 1:
@@ -640,7 +654,7 @@ for psr in pulsar_list:
 				if use_comp == 'zuul' and \
 				       not os.path.isfile("%s%s*" %(renee_dir,pfd_str)):
 				    os.chdir("%sdetection_plots/" %work_dir)
-				    sproc.call("ln -fs %s%s_temp/*%s*pfd ." %(work_dir,psr.name,beam_cand.num), shell=True)          #getting error here. whyyyyyyy?
+				    sproc.call("ln -fs %s%s_temp/*%s*pfd ." %(work_dir,psr.name,beam_cand.num), shell=True)        
 				    os.chdir("%s%s_temp" %(work_dir,psr.name))
 				elif use_comp == 'GB' and len(glob("%s%s*" %(renee_dir,pfd_str))) == 0:
 				    sproc.call("cp  gu*%s_%s*ps %sdetection_plots/"
