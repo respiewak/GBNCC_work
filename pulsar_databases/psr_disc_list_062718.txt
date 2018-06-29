@@ -1,0 +1,2226 @@
+# GBNCC
+#	Pulsar	P(ms)	DM	Single Pulse	Discovered by:
+150	J1921-05	2228	80.3	J1921-05	McGill(CyberSKA)
+149	J1946-09	91.2	50.2	None	UWM(CyberSKA)
+148	J1733-01	302	61.9	None	UWM(CyberSKA)
+147	J0025-19	1306	21.0	J0025-19	McGill(CyberSKA)
+146	J2257-16	469	52.8	J2257-16	McGill(CyberSKA)
+145	J2207-15	766	28.7	None	NRAO(CyberSKA)
+144	J2017-04	40.6	30.9	None	UWM(CyberSKA)
+143	J1741-02	132	81.8	None	UWM(CyberSKA)
+142	J1316-01	2.91	29.4	None	NRAO(CyberSKA)
+141	J1941+02	1232	87	J1941+02	NRAO(CyberSKA)
+140	J1221-06	1.93	16	None	UWM(CyberSKA)
+139	J2017-27	224	26	None	UWM(CyberSKA)
+138	J1822+02	1508	103	J1822+02	NRAO(CyberSKA)
+137	J1901-04	1830	107	J1901-04	UWM(CyberSKA)
+136	J1842-39	374	47	None	McGill(Singlepulse)
+135	J0648-27	4169	133	None	McGill(SinglePulse)
+134	J2038-36	3.28	24	None	UWM(CyberSKA)
+133	J2022+25	2.65	54	None	UWM(CyberSKA)
+132	J1819-37	632	68	None	UWM(CyberSKA)
+131	J1638-35	705	115	None	UWM(CyberSKA)
+130	J1536-30	1901	63	None	UWM(CyberSKA)
+129	J1529-26	799	45	None	UWM(CyberSKA)
+128	J1017-15	83.1	17	None	UWM(CyberSKA)
+127	J0534-13	979	74	None	UWM(CyberSKA)
+126	J2019+72	219	35	None	??(CyberSKA)
+125	J1907+57	424	55	None	??(CyberSKA)
+124	J2150-03	3.5	21	None	UWM(CyberSKA)
+123	J1122-35	7.8	39	None	UWM(CyberSKA)
+122	J1045-04	24.0	4.8	None	UWM(CyberSKA)
+121	J2148-34	927	14	None	UWM(CyberSKA)
+120	J2131-31	3325	32	None	UWM(CyberSKA)
+119	J2054-39	977	25	None	UWM(CyberSKA)
+118	J2044+28	1618	90	None	UWM(CyberSKA)
+117	J2000+29	3074	133	None	UWM(CyberSKA)
+116	J1928+28	1063	79	None	UWM(CyberSKA)
+115	J1904+33	417	81	None	UWM(CyberSKA)
+114	J1644-33	397	130	None	??(CyberSKA)
+113	J1629+33	1525	35	None	WVU(CyberSKA)
+112	J1611-29	9.6	83	None	UWM(CyberSKA)
+111	J0659-36	637	84	None	UWM(CyberSKA)
+110	J0636-23	476	60	None	UWM(CyberSKA)
+109	J0414+31	1081	64	None	??(CyberSKA)
+108	J0406+30	2.6	49	None	WVU(CyberSKA)
+107	J0405+33	64.0	54	None	UWM(CyberSKA)
+106	J0355+28	365	49	None	UWM(CyberSKA)
+105	J1829+25	2857	74	None	UWM(CyberSKA)
+104	J1806+28	15.1	18.7	None	WVU(CyberSKA)
+103	J1235-36	569	59	None	WVU(CyberSKA)
+102	J1948-27	332	58	None	UVA(CyberSKA)
+101	J1940-24	98.2	53.4	None	UVA(CyberSKA)
+100	J1917-29	1249	38	None	McGill(CyberSKA)
+99	J1515-32	64.4	25	None	McGill(CyberSKA)
+98	J1127-38	877	48	None	McGill(CyberSKA)
+97	J1154-19	11.1	10.7	None	McGill(CyberSKA)
+96	J0530-39	907	49	None	McGill(CyberSKA)
+95	J1929+38	814	93	None	WVU(CyberSKA)
+94	J1954+38	353	65	None	WVU(CyberSKA)
+93	J0557-29	43.6	49	None	WVU(CyberSKA)
+92	J2152-28	1343	33	None	WVU(CyberSKA)
+91	J0758-30	1092	86	None	UNM(CyberSKA)
+90	J1115-24	868	30	None	WVU(CyberSKA)
+89	J0930-22	1807	79	None	WVU(CyberSKA)
+88	J0125-23	3.68	9.6	None	McGill(CyberSKA)
+87	J1308-23	2.83	22	None	UNM(CyberSKA)
+86	J1120-23	497	9.9	None	McGill(CyberSKA)
+85	J1336-25	478	37	None	WVU(CyberSKA)
+84	J0038-25	257	5.7	None	WVU(CyberSKA)
+83	J0110-22	1262	20	None	McGill(CyberSKA)
+82	J1741-21	2565	151	None	UNM(CyberSKA)
+81	J1949+34	389	228	None	UNM(CyberSKA)
+80	J2158-27	477	22	None	UNM(CyberSKA)
+79	J2356+22	1841	23	None	UNM(CyberSKA)
+78	J2040-21	563	24	None	McGill
+77	J1836+51	692	44	None	McGill(CyberSKA)
+76	J1929+66	806	60	None	UNM(CyberSKA)
+75	J0104+64	1386	43	None	UNM(CyberSKA)
+74	J2327+62	266	194	None	UNM(CyberSKA)
+73	J1530-21	505	38	None	UBC(CyberSKA)
+72	J1327+34	41.5	4.2	None	McGill(CyberSKA)
+71	J1505-25	999	44.8	None	NRAO/UVA(CyberSKA)
+70	J2353-22	558	9.9	None	UNM(CyberSKA)
+69	J2145+21	1419	44	J2145+21	McGill
+68	J1239+32	4.70	17	None	McGill(CyberSKA)
+67	J0141+63	46.7	273	None	NRAO/UVA(CyberSKA)
+66	J2105+28	406	62	None	ARCC
+65	J0034+69	36.8	80	None	McGill(CyberSKA)
+64	J2113+67	552	54	None	McGill(CyberSKA)
+63	J1929+62	1456	67	None	McGill(CyberSKA)
+62	J0417+61	440	71	None	ARCC
+61	J1911+37	851	72	None	McGill
+60	J2210+57	2057	189	None	McGill
+59	J1922+58	530	53	None	McGill
+58	J0749+57	1175	27	None	McGill
+57	J1110+58	793	26	None	McGill
+56	J1706+59	1477	31	None	McGill
+55	J2017+59	403	61	None	McGill
+54	J0645+80	658	50	None	McGill
+53	J0125+62	1708	118	None	McGill
+52	J2205+62	323	167	None	McGill
+51	J1320+67	1029	28	None	McGill
+50	J1101+65	3631	19	J1101+65	McGill
+49	J0112+66	4301	112	None	McGill
+48	J0136+63	718	286	J0136+63	McGill
+47	J2228+64	1893	194	None	McGill
+46	J2137+64	1751	106	None	McGill
+45	J0746+66	407	28	J0746+66	McGill
+44	J0741+66	2.88	15	None	McGill
+43	J1939+66	22.2	41	None	McGill
+42	J0357+66	91.5	62	None	McGill
+41	J0338+66	1762	67	None	McGill
+40	J1859+76	1394	47	None	McGill
+39	J2027+74	515	11	None	McGill
+38	J1953+67	8.57	57	None	McGill
+37	J0737+69	6824	16	J0737+69	McGill
+36	J1627+86	396	47	None	McGill
+35	J0325+67	1365	65	None	McGill
+34	J1122+78	4.20	11.2	None	McGill
+33	J2001+42	719	55	None	McGill
+32	J1649+80	2.02	31	None	McGill
+31	J0614+83	1039	44	J0614+83	McGill
+30	J1821+41	1262	40	J1821+41	McGill
+29	J0610+37	444	39	None	McGill
+28	J1941+43	841	79	None	McGill
+27	J1954+43	1387	130	None	McGill
+26	J2207+40	637	11.6	None	McGill
+25	J0510+38	76.5	69	None	McGill
+24	J0943+41	2230	21	J0943+41	McGill
+23	J0740+41	3.14	21	None	McGill
+22	J0358+42	226	46	None	McGill
+21	J0636+51	2.86	11.1	None	ARCC
+20	J0519+54	340	43	None	ARCC
+19	J1629+43	181	7.3	None	McGill
+18	J0058+49	996	67	None	McGill
+17	J1710+49	3.22	7.1	None	McGill
+16	J1800+50	578	23	J1800+50	McGill
+15	J0213+52	376	38	None	McGill
+14	J1935+52	568	71	J1935+52	McGill
+13	J2122+54	139	32	None	McGill
+12	J1815+55	427	59	None	McGill
+11	J0053+69	832	117	None	ARCC
+10	J1942+81	203	40.2	None	ARCC
+9	J1432+72	41.7	12.6	None	ARCC
+8	J2353+85	1011	38.3	None	ARCC
+7	J0645+51	8.85	18.2	None	ARCC
+6	J0216+52	24.5	22	None	ARCC
+5	J1921+42	595	53	J1921+42	ARCC
+4	J2316+69	813	71	J2316+69	ARCC
+3	J1647+66	1599	22	J1647+66	ARCC
+2	J2243+69	855	68	None	ARCC
+1	J1816+45	3.19	38.9	None	ARCC
+#LOFAR
+85	J1706+35	159	19.2	May 23, 2018
+84	J2022+21	803	73.5	May 3, 2018
+83	J1844+21	594	28.7	Apr 28, 2018
+82	J0813+22	531	52.2	Apr 21, 2018
+81	J2228+40	272	74.2	Apr 10, 2018
+80	J1000+08	440	21.7	Mar 20, 2018
+79	J1910+56	341	20.7	Jan 11, 2018
+78	J2123+36	1294	108.4	Dec 16, 2017
+77	J1953+30	1271	43.6	Dec 15, 2017
+76	J0100+69	1145	63.5	Dec 5, 2017
+75	J1426+52	995	25.3	Oct 5, 2017
+74	J1958+56	311	58.1	Sep 27, 2017
+73	J0210+58	1766	76.8	Sep 22, 2017
+72	J1017+30	452	27.3	Aug 28, 2017
+71	J1838+00	127	98.2	Aug 26, 2017
+70	J2034+66	501	50.7	Aug 15, 2017
+69	J0107+13	1197	21.6	Aug 13, 2017
+68	J0249+58	23535	45.7	Aug 7, 2017
+67	J1657+32	1570	23.9	Jun 29, 2017
+66	J1740+38	828	47.2	Jun 27, 2017
+65	J1638+40	767	33.3	Jun 24, 2017
+64	J2122+24	541	8.4	Jun 1, 2017
+63	J0059+80	1493	55.7	May 30, 2017
+62	J1745+12	1059	65.9	May 17, 2017
+61	J1642+12	1099	35.7	Mar 16, 2017
+60	J1710+78	432	37.0	Feb 6, 2017
+59	J1810+06	307	79.4	Jan 22, 2017
+58	J1749+59	436	45.0	Jan 5, 2017
+57	J0952–0607	1.41	22.4	Dec 29, 2016
+56	J0652+47	4.75	25.5	Dec 28, 2016
+55	J1658+36	33	3.0	Dec 24, 2016
+54	J0454+45	1389	20.8	Dec 22, 2016
+53	J1957+00	965	38.3	Dec 12, 2016
+52	J1624+58	651	26.4	Dec 7, 2016
+51	J1655+62	776	35.3	Dec 2, 2016
+50	J1916+32	1137	84.2	Nov 25, 2016
+49	J0421+32	900	76.9	Nov 4, 2016
+48	J2354+40	387	20.5	Oct 2, 2016
+47	J0215+51	384	18.4	Oct 2, 2016
+46	J2329+47	728	43.9	Sep 12, 2016
+45	J1634+23	1208	37.5	Sep 9, 2016
+44	J0121+14	1388	17.8	Jul 8, 2016
+43	J1404+11	2650	18.5	Jul 6, 2016
+42	J0418+22	45	5.6	Jul 5, 2016
+41	J0139+33	1248	21.2	Jul 5, 2016
+40	J1932+53	2052	33.4	Jun 22, 2016
+39	J0742+43	606	36.1	May 17, 2016
+38	J0856+33	242	23.9	May 13, 2016
+37	J0114+63	521	65.0	May 3, 2016
+36	J2025+31	6.3	13.6	Apr 22, 2016
+35	J1552+5436	2.42	22.9	Mar 20, 2016
+34	J0518+51	912	39.3	Mar 20, 2016
+33	J0349+23	2421	63.1	Mar 8, 2016
+32	J1849+26	519	74.9	Jan 28, 2016
+31	J2051+12	553	43.4	Jan 25, 2016
+30	J1342+65	122	38.7	Jan 22, 2016
+29	J1340+65	1394	30.0	Jan 18, 2016
+28	J1235–02	3597	18.8	Jan 18, 2016
+27	J1225+00	2284	18.5	Jan 18, 2016
+26	J1733+63	510	41.8	Aug 30, 2015
+25	J0039+35	536	53.0	Aug 18, 2015
+24	J1745+42	305	37.9	Aug 17, 2015
+23	J1715+46	548	19.8	Aug 14, 2015
+22	J1726+34	821	23.9	Aug 12, 2015
+21	J0928+30	1045	21.9	Aug 10, 2015
+20	J2053+17	119	27.0	Jul 16, 2015
+19	J0810+37	1248	16.9	Jul 15, 2015
+18	J2006+22	1741	130.4	Jul 14, 2015
+17	J1740+27	1058	35.5	Jun 24, 2015
+16	J2210+21	1776	46.3	May 15, 2015
+15	J0301+20	1207	19.0	Apr 2, 2015
+14	J1849+15	2233	77.4	Mar 19, 2015
+13	J0815+4611	434	11.3	Dec 15, 2014
+12	J2305+31	341	46.1	Dec 9, 2014
+11	J1814+22	253	62.3	Sep 1, 2014
+10	J2336–01	1029	19.6	Aug 22, 2014
+9	J2057+21	1116	73.6	Aug 9, 2014
+8	J0305+11	862	27.8	Aug 9, 2014
+7	J0317+13	1974	12.9	Aug 9, 2014
+6	J1809+17	2066	47.0	Jun 11, 2014
+5	J2350+31	508	39.1	May 22, 2014
+4	J0935+33	961	18.4	Mar 3, 2014
+3	J1529+40	476	6.6	Feb 26, 2014
+2	J0613+37	619	19.1	Jan 14, 2013
+1	J0140+56	1775	101.6	Jan 14, 2013
+1	 J1002-5918	Confirmed
+#HTRU South
+(PKS 2013-04-23)
+Class 1 
+Yes 
+(282.732, -3.214) 
+Normal 
+10:02:09.24 
+-59:18:40.5 
+713.49520 
+347.2 
+18.2 
+ 	10:02:17.25
+-59:20:13.8 
+2013-03-07
+(Cherry) 
+NO 
+111 
+ 2	J1101-6425 	Confirmed
+(PKS 2013-04-19) 
+Class 1 	Probably not 
+MSP 	11:01:40.44	-64:25:40.7 	5.108736814 	207 	19.7 
+ 	10:02:17.25
+-59:20:13.8
+2013-04-12
+(Cherry) 	NO
+111 
+ 3	
+J1136-6533
+
+Confirmed
+(PKS 2016-10-16) 
+Class 1 	Not yet
+Normal	11:36:10.8	-65:33:16.1	1189.246	173	 
+11.8 	11:36:12.35 -65:32:42.1	2016-10-11
+(Andrew Cameron) 	Not yet
+ 4	J1152-6111 
+(and a better presto plot)
+Confirmed 
+(PKS 2013-10-22)
+Class 1 
+No detection 
+Normal
+/slow MSP 
+11:52:19.56
+-61:11:19.2 
+101.634 
+216.991 
+ 13.7	9.99
+11:52:21.37
+-61:10:22.4
+2012-03-12 (Cherry) 
+ NO
+121
+5
+J1211-6318
+
+
+Confirmed
+(PKS 2016-04-23)	Class 1 
+No detection	Normal	12:11:11.04	-63:18:18.6	1163.17	547	
+11.6	12:11:03.33 -63:18:38.4	2016-03-14
+(Andrew Cameron)	Not yet
+6
+J1223-5857
+
+Confirmed 
+(PKS 2015-12-08)	Class 1 
+No data
+Normal
+12:23:43.08	-58:57:33.6	288.544
+233
+
+ 34.92	 12:23:43.08
+-58:57:33.6
+2015-08-31 
+(Andrew Cameron)
+Not yet
+7
+J1228-6308 
+Confirmed 
+(PKS 2013-06-28)	Class 1 
+No detection
+Normal 
+12:28:06.24	‑63:08:17.9 
+444.5638004 
+360 
+19 
+ 	 	2013-06-24 
+(Cherry)
+NO 
+8
+J1244-6402 
+Confirmed 
+(PKS 2012-07-25)
+Class 1 
+No detection 
+Normal
+/slow MSP 
+12:44:46.32
+-64:02:09.3 
+147.27848 
+286.52 
+ 14.9	12.53 
+12:44:29.80
+-64:02:38.7
+2012-03-15 (Cherry) 
+ NO
+89
+9
+J1248-6450 
+Confirmed 
+(PKS 2012-09-29)
+Class 1 
+Marginal
+Normal 
+12:48:36.00
+-64:50:24.3 
+1234.889 
+237.4 
+ 8.5	13.40 
+12:48:15.87
+-64:43:20.7	2011-09-29 (Cherry) 
+ NO
+112
+10
+J1255-6247	Confirmed 
+(PKS 2013-12-11)
+ 	 	 	12:55:02.28	‑62:47:57.7 	 182	713 
+ 	 14.19	 	2013-11-07 (Cherry) 
+NO 
+11
+J1259-6602
+
+
+Confirmed 
+(PKS 2015-12-08)
+Class 1
+ Not yet
+Normal
+12:59:58.92	-66:02:50.5 
+ 1143.245	461
+ 	 13.53	12:59:58.92
+-66:02:50.5	2015-09-18 (Andrew Cameron) 
+Not yet
+12
+J1345-5850
+
+
+
+Confirmed 
+(PKS 2016-11-21)
+Class 1
+Yes	Normal	13:45:14.8	‑58:50:09.8 
+ 252.398	298	 	15.35	13:45:04.79 -58:54:14.7	2016-10-11 (Andrew Cameron) 
+Not yet
+13
+J1349-6356 
+Confirmed 
+(PKS 2014-01-20) 
+Class 1 
+Yes (309.203, -1.80)
+Normal 
+13:49:24.60 
+-63:56:26.1 
+373.0340968 
+478 
+
+ 17.4	 	2014-01-12 (Cherry)  
+ Not yet
+14
+ J1430-5713	Confirmed
+(PKS 2015-10-03)
+ Class 1
+No detection 
+Normal 
+ 14:30:26.64	-57:13:42.6 
+ 491.507	142 
+ 	 13.21	14:30:15.09 -57:09:50.4 
+ 2015-09-02
+(Andrew Cameron)
+ Not yet
+15
+ J1434-5941	 Confirmed
+(PKS 2015-07-21)
+Class 1 
+No detection 
+ Normal	 14:34:15.96	-59:41:19.6 
+ 1072.129	 133	 	 13.26	14:35:01.96 -59:42:04.0 
+2015-04-28
+(Andrew Cameron) 
+ Not yet
+16
+J1456-5504
+ 	 Confirmed
+(PKS 2016-12-27)
+Class 1 
+Not yet 
+ Normal	 14:56:30.48	-55:04:25.3 
+ 242.998	 74.2	 	 11.47	14:56:21.14 -55:01:51.0	2014-07-11
+(Cherry) 
+ Not yet
+17
+J1500-5549 
+Confirmed  
+(PKS 2014-12-15)	Class 1 
+Confirmed 
+Normal 
+15:00:11.88 
+-55:49:25 
+2767.3 
+195 
+ 	17 
+ 	2014-12-12 (Andrew Jameson) 
+ Not yet
+18
+ J1504-5659	Confirmed
+(PKS 2015-05-27) 
+ Class 1
+ No detection
+Normal 
+ 15:04:55.56	 -56:59:31.2	 1672.371	 453	 	 14.24	 15:04:40.53 -56:55:54.7	 2015-03-10
+(Andrew Cameron)
+ Not yet
+19
+J1507-5757
+
+Confirmed
+(PKS 2015-05-27) 
+ Class 1
+Yes (320.108, 0.388)	Normal
+15:07:39	-57:57:00	897.25	426
+
+11.05
+15:07:18.84 -58:01:35.5	2015-12-03
+(Andrew Cameron)
+Not yet
+20
+J1514-5322
+
+Confirmed
+(PKS 2017-01-31) 
+ Class 1
+Yes
+Normal
+15:14:31.2	-53:22:17.8	296.279	27.3
+
+10.2
+15:14:07.59 -53:16:29.7	2016-12-09
+(Andrew Cameron)
+Not yet
+21
+J1514-6018
+
+Confirmed
+(PKS 2016-03-29) 
+ Class 1
+Tentative
+
+Normal
+15:14:16.44	-60:18:49.9	1958.742	318
+
+18
+15:13:41.29 -60:11:41.4	2016-03-09
+(Andrew Cameron)
+Not yet
+22
+J1526-5524	Confirmed 
+(PKS 2012-02-28) 
+Class 1, broad profile 
+Confirmed
+Normal 
+15:26:11.40
+-55:24:51.5 
+355.156	127.2 
+ 13.3	12.63 
+15:25:21.93
+-55:23:19.1
+2011-08-23 (Cherry)	 NO
+135
+23
+J1527-5545 
+Confirmed 
+(PKS 2012-02-27)
+Class 1 
+No detection
+Normal 
+15:27:57.96
+-55:45:23.0 
+3467.300 
+265.8 
+16.0
+14.39 
+15:28:24.61
+-55:44:16.7
+2011-08-23 (Cherry)	 NO
+121
+24
+J1532-5603	Confirmed 
+(PKS 2012-02-29)
+Class 1	Weak detection 
+Normal 
+15:32:33.00
+-56:03:59.6 
+522.97552 
+282.0 
+ 12.0	12.03 
+15:32:33.01
+-56:04:36.5
+2011-08-07 (Cherry) 
+ NO
+127.199
+25
+J1537-5317 
+Confirmed
+(PKS 2015-04-18) 
+Class 1 
+No detection 
+MSP 
+ 15:37:48.72	 -53:17:59.8	 6.927	 117.5	 	14.77	 15:37:32.66 -53:14:40.4	 2015-04-13
+(Andrew Cameron)
+ Not yet
+26
+J1538-5623 
+Confirmed
+(PKS 2013-04-18)
+Class 1  
+Yes (324.641, -0.622) 
+Normal 
+15:38:51.0 
+-56:23:48.0 
+1908.49406
+163 
+22.7 
+ 	15:38:34.41 -56:21:01.6 
+2013-03-14
+(Cherry) 
+NO 
+119 
+27
+ J1546-5706	Confirmed
+(PKS 2015-03-11) 
+ Class 1
+ No detection
+ MSP	 15:46:41.88	 -57:06:43.8	 4.291	 95.7	 	 17.51	 15:47:15.96 -57:12:29.7	 2015-02-26
+(Andrew Cameron)
+ Not yet
+28
+ J1557-5153
+ Confirmed
+(PKS 2015-01-09)
+ Class 1  
+ No detection
+ Normal	 15:57:37.72	 -51:53:48.2	 408.157	 463	
+ 17.19	 15:57:22.03 -51:51:09.7	 2015-01-07
+(Andrew Cameron)
+Not yet 
+29
+J1603-5316
+
+ Confirmed
+(PKS 2016-06-27)
+ Class 1  
+Tentative
+Normal	16:03:26.28	-53:16:22.7	839.213	113	
+14	16:03:30.98 -53:17:12.4	2016-05-10
+(Andrew Cameron)	Not yet
+30
+J1612-5019
+
+
+ Confirmed
+(PKS 2016-12-27)
+ Class 1 	No	Normal	16:12:57.96	‑50:19:37.5	1368.284	255	
+12	16:12:46.41 -50:25:45.7	2016-09-22
+(Andrew Cameron)	Not yet
+31
+J1612-5509 
+Confirmed 
+(PKS 2014-08-17)
+Class 1 
+No 
+Normal 
+16:12:04.33 
+-55:09:27.2 
+846.907 
+312 
+ 	17.7 
+ 	 2014-06-30 (Cherry)
+ 
+32
+J1613-4926	Confirmed 
+(PKS 2012-07-17)	Class 1/2, scattered profile
+No detection
+Normal 
+16:13:00.12	-49:26:23.4 
+192.6872 
+439.4 
+ 11.8	12.59 
+16:12:57.05
+-49:27:19.9	2011-09-26 (Cherry)
+ NO
+76
+33
+J1615-4959
+
+Confirmed 
+(PKS 2017-01-31)	Class 1
+Yes	Normal 
+16:15:12.2	‑49:59:35.4 
+558.257	237	 	14.15 
+
+2016-09-22 (Andrew Cameron)
+ Not yet
+34
+J1616-5017 
+Confirmed (PKS 2013-06-27)	Class 1
+No detection
+Normal 
+16:16:37.92 
+-50:17:35.4 
+491.376 
+194.0	21.5 
+ 	 	2013-04-25
+(Cherry)
+NO 
+35
+J1618-4623
+
+Confirmed (PKS 2016-01-18)	Class 1
+No detection
+MSP
+16:18:16.56	-46:23:16.9	5.932
+125.4
+
+15.14
+16:18:39.75 -46:22:14.5	2016-11-03
+(Andrew Cameron)
+Not yet
+36
+J1622-4851 
+Confirmed 
+(PKS 2012-04-04)
+Class 1
+No detection 
+Normal 
+16:22:04.08
+-48:51:02.7 
+735.089 
+292.1 
+ 12.6	12.14 
+16:21:46.91
+-48:48:02.9
+2011-08-23 (Cherry)	 NO
+39
+37
+J1627-4954 
+Confirmed by PMPS detection
+Class 1 
+Yes (334.342, -0.792)	Normal 
+16:27:46.44 
+-49:54:35.8 
+623.678 
+596 
+ 	14 
+ 	2014-09-01 (Cherry) 
+ 
+38
+J1627-5108 
+Confirmed 
+(Strong PMPS detection) 
+ Class 1
+Yes (333.483 -1.433) 
+Normal 
+16:27:33.12 
+-51:08:07.1 
+439.684 
+201 
+ 	21.56 
+ 	2014-07-22 (April) 
+ 
+39
+J1633-4955
+Confirmed
+(PKS 2013-04-18)
+Class 1 
+Yes 
+(334.949, -1.433) 
+Normal 
+16:33:10.8 
+‑49:54:55.6 
+684.889 
+649.1 
+14.3 
+ 	16:33:28.14 -49:53:25.8	2013-02-19
+(Cherry) 
+ NO
+69
+40
+J1634-4230
+
+Confirmed
+(PKS 2016-01-18)
+Class 1
+No detection
+Normal
+16:34:22.44	-42:30:02.9	2015.101
+360
+
+19.89
+16:34:22.44
+-42:30:02.9
+2015-10-20
+(Andrew Cameron)
+Not yet
+41
+J1638-4444 
+Confirmed 
+(PKS 2013-01-31)
+Class 1 
+Not yet 
+Normal  
+16:38:17.88 
+-44:44:59.4 
+568.05659 
+494 
+15.5 
+ 	16:38:08.26
+-44:43:37.9
+2013-01-22 (Cherry) 
+ NO
+112
+42
+ J1649-3933	Confirmed 
+(PKS 2012-12-02) 
+Class 1 
+Yes (344.474 3.419) 
+Normal 
+16:49:18.84
+-39:33:22.6 
+770.859727	290.3 
+13.0	17.21
+16:49:27.59
+-39:34:43.0
+2012-10-26 (Cherry) 
+NO
+258
+43
+J1653-4108
+
+Confirmed 
+(PKS  2016-07-19)	Class 1 
+Not yet
+Normal
+16:53:53.16	-41:08:27.1	498.977	416
+
+15.8	16:53:37.08 -41:06:00.1	2016-06-30
+(Andrew Cameron)
+Not yet
+44
+J1653-4514
+
+Confirmed 
+(PKS  2016-04-25)	Class 1 
+No detection
+Normal
+16:53:57.84	-45:14:15.9	950.98	212
+
+11.2
+16:53:54.94 -45:17:29.3	2016-03-03
+(Andrew Cameron)
+Not yet
+45
+J1658-4712	Confirmed 
+(PKS  2014-05-17)	Class 1	Yes (339.845, -2.836) 	Normal 	16:58:22.08 	‑47:12:43.3 	369.33	533.1	 	 11.5	 	2014-05-10 (Cherry) 
+ 
+46
+J1705-3759
+
+Confirmed 
+(PKS  2016-03-29)	Class 1	No detection
+Normal
+17:05:15.36	-37:59:24.4	305.232	404
+
+11.3
+17:05:05.96 -37:57:59.2	2016-02-22
+(Andrew Cameron)
+Not yet
+47
+J1705-4432 
+Confirmed
+(PKS 2015-05-27) 
+ Class 1
+ No detection
+Normal 
+ 17:05:50.28	 -44:32:49.7	429.921 
+ 467	 	16.87 
+ 17:06:05.23 -44:31:40.6	 2015-02-19
+(Andrew Cameron)
+ Not yet
+48
+J1708-3639
+Confirmed
+(PKS 2012-04-04)
+Class 1 
+Very weak 
+Normal 
+17:08:59.28
+-36:39:59.7 
+587.567 
+314.1 
+ 16.1	13.45 
+17:08:55.11
+-36:42:31.5
+2011-08-22 (Cherry)	 NO 
+118
+49
+J1711-3721 
+Confirmed 
+(PKS 2014-01-18) 
+Class 1 
+Tentative (349.052, 1.21)
+Normal 
+17:11:41.28 
+-37:21:45.5 
+792.6603279 
+347 
+
+ 13.3	 	2014-01-12 (Cherry)  
+ Not yet
+50
+J1718-4107 	Confirmed 
+(PKS 2014-08-17)
+Class 1 	Not yet 	Normal 	17:18:14.4 	-41:07:28.8 	548.419 	349 	 	12.4 	 	2014-07-24 (April) 	 
+51
+J1719-3450
+
+Confirmed 
+(PKS 2016-02-26)	Class 1 	Confirmed
+(351.95, 1.452)
+Normal
+17:19:06.6	-34:50:39.7	493.775
+528
+
+13.7
+17:19:10.06 -34:55:32.2	2016-01-25
+(Andrew Cameron)
+Not yet
+52
+J1720-3655 
+Confirmed 
+(PKS 2014-01-20) 
+Class 1 
+Not yet 
+Normal 
+17:20:42.36 
+-36:55:30.7 
+92.1321248 
+341.9 
+ 
+ 14.5	 	 2014-01-12 (Cherry)	Not yet 
+53
+J1722-3822	Confirmed 
+(PKS 2012-02-28)
+Class 1 	Confirmed
+Normal 	17:22:58.08	-38:22:41.4 	765.79615 	463.95 	 12.7	14.26 	17:22:56.94
+-38:23:33.9 	2011-12-27 (Cherry) 	 NO
+54
+54
+J1726-2953
+
+Confirmed 
+(PKS 2017-01-05)	Class 1	Yes	MSP	17:26:57.48	-29:53:40.1	28.405	215
+
+16.6	
+2017-01-05 (Andrew Cameron)	Not yet
+55
+J1730-3448 
+Tentatively confirmed with PMPS 
+Class 1 
+Yes (353.225, -0.42) 
+Normal 
+ 	 	99.829 
+628 
+ 
+15.3 
+ 	2014-08-26 (Cherry) 
+ 71
+56
+J1731-3325	Confirmed 
+(PKS 2012-09-29)	Class 1/2, scattered profile 
+Very weak 
+Normal 
+17:31:00.48
+-33:25:26.9 
+544.668 
+877.4 
+ 10.8	10.49 
+17:31:00.38
+-33:25:27.6	2011-08-22 (Cherry) 
+ NO 
+51
+57
+J1732-3512	Confirmed 
+(PKS 2013-12-08)
+ 	 	 	 17:32:11.65	‑35:12:08.5 	 126	340 
+ 	 11.05	 17:32:27.54
+-35:09:38.4
+2013-11-21  (Cherry)
+NO 
+58
+J1734-2900
+
+Confirmed 
+(PKS 2016-03-29)
+Class 1 
+Tenative
+Normal
+17:34:22.44	-29:00:41.8	301.457
+314
+
+10.4
+17:34:14.76 -28:59:37.5	2016-02-17
+(Andrew Cameron)
+Not yet
+59
+J1734-3100	Confirmed 
+(PKS 2012-02-23)	Class 1	Confirmed	Normal	17:34:54.12	-31:00:15.2
+541.28578 
+261.5 
+ 25.8	20.99 
+17:34:48.65
+-31:01:30.4
+2011-07-12 (Cherry)	 NO
+43.265 
+60
+J1738-2734
+ Confirmed 
+(PKS 2013-01-30)
+Class 1  
+Yes 
+(0.35, 2.185) 
+Normal 
+17:38:12.48 
+‑27:34:40.3 
+627.713 
+323.0 
+26 
+ 	17:38:19.41
+-27:35:32.9
+2013-01-30 
+(Cherry) 
+NO 
+61
+J1741-3420
+
+Confirmed 
+(PKS 2014-01-19)
+Class 1 
+Not yet 
+Normal 
+17:41:58.92 
+-34:20:05.6 
+875.079811 
+241.8 
+
+ 12	 	2014-01-07 (Cherry)  
+Not yet 
+62
+J1743-3532 
+Confirmed 
+(PKS 2014-08-17) 
+Class 1 
+Probably 
+Normal 
+ 	 	569.98 
+177 
+ 	14.4 
+ 	2014-07-16 (April) 
+ 
+63
+J1745-2324
+ 
+Confirmed 
+(PKS 2017-02-17) 
+Class 1 
+No 
+MSP
+17:45:29.16 
+ -23:24:55.1	5.416
+ 245
+ 	14.3
+ 	2017-02-09 (Andrew Cameron) 
+ Not yet
+64
+J1746-2752 
+Confirmed 
+(PKS 2013-12-06)
+Class 2 
+Probably not 
+Normal 
+17:46:06.37 
+-27:52:37.3 
+487.5279755 
+443 
+ 	8.7 
+ 17:46:00.40
+-27:51:49.0
+2013-11-06 (Cherry) 
+ NO
+65
+J1748-3017	Confirmed 
+(PKS 2014-06-26) 
+Class 1 
+Yes (359.213, -1.212) 
+Normal 
+ 	 	 382	584 
+ 	12.3 
+ 17:48:12.10
+-30:16:25.8	 2014-06-25 (Cherry)
+ 
+66
+J1749-2149
+
+Confirmed 
+(PKS 2016-04-25)	Class 1
+No detection
+Normal
+17:49:43.81	-21:49:26.7	2714.287
+295
+
+16.9
+17:49:43.81 -21:49:26.7	2015-11-09
+(Andrew Cameron)
+Not yet
+67
+J1750-2840 
+Confirmed 
+(PKS 2014-01-22) 
+Class 1 
+Not yet 
+Normal 
+17:50:16.08 
+-28:40:58.2 
+1300.517734 
+388.7 
+
+ 11.6	 	2014-01-12 (Cherry)	 Not yet
+68
+J1753-2853
+
+Self-confirming	Class 1 
+Yes	Normal 
+17:53:07.8	-28:53:29.3	85.859	18	
+ 19.8	 	2016-11-09 (Andrew Cameron)	 Not yet
+69
+J1755-2553 
+ "Self-confirming" and PMPS detection
+Class 1 
+ Yes (3.777, -0.329)
+ Normal	 	
+315.22	751	
+15.1 
+
+ 2014-08-25 (Cherry)	
+70
+J1755-2605 
+Confirmed 
+(PKS 2014-01-22) 
+Class 1 
+Not yet 
+Normal 
+17:55:08.40 
+-26:05:05.5 
+430.871909 
+405 
+
+ 15.6	 	2014-01-12 (Cherry)  
+Not yet 
+71
+ J1756-2528	"Self-confirming" 
+Class 1
+ Marginal 
+Normal 
+ 	 	855.98 
+706 
+ 	20.5 
+ 	 2014-08-25 (Cherry)	 
+72
+J1758-2743 
+Confirmed 
+(PKS 2014-01-21) 
+Class 1 
+Not yet 
+MSP 
+17:58:14.88 
+-27:43:06.3 
+17.6872126 
+333.9 
+
+ 14.6	 	2014-01-10 (Cherry) 
+ Not yet
+73
+J1759-2402 
+Confirmed 
+(PKS 2014-01-18)
+Class 1 
+No data 
+Normal 
+17:59:24.72 
+-24:02:34.8 
+1457.739 
+772.5 
+28.5 
+ 	 	2013-02-25
+(Cherry) 
+2FGL J1758.8-2402c 
+74
+ J1810-1708	 Confirmed
+(PKS 2015-07-28)
+ Class 1
+ No detection
+Normal 
+ 18:10:51.24	 -17:08:58.2	 1161.131	 639	 	 13.93	18:10:35.94 -17:06:55.5 
+ 2015-07-03
+(Andrew Cameron)
+ Not yet
+75
+J1811-1721 
+Confirmed 
+(PKS 2013-12-10)
+Class 1 
+Tentative (12.95, 0.569) 
+Normal 
+18:11:24.78 
+-17:21:45.7 
+391.3842531 
+545.5 
+
+14.19 
+18:11:39.28
+-17:18:32.6 
+ 2013-11-05 (Cherry)
+ NO
+76
+J1812-1530
+ 
+Confirmed 
+(PKS 2017-01-30)
+Class 1 
+No	Normal 
+18:12:38.52	-15:30:52.5	1014.533	436	
+42.5	
+ 2016-11-25 (Andrew Cameron)
+ Not yet
+77
+J1812-2057
+
+Confirmed 
+(PKS 2016-04-24)
+Class 1 
+Not yet	Normal	18:12:46.08	-20:57:19.5	1903.107	457	
+23.21	18:12:46.13 -20:57:47.1	2016-03-16
+(Andrew Cameron)	Not yet
+78
+J1819-1706 
+Confirmed 
+(PKS 2014-06)
+Class 1	Not yet 	Normal 	 18:19:31.8	-17:03:37.5 
+2352.24 
+ 81.2	 	11.23 
+ 	 2014-06-18 (Cherry)
+ 
+79
+J1822-0721
+
+Confirmed 
+(PKS 2016-09-20)	Class 1	Not yet 	Normal 	 18:22:09.12	-07:21:31.3	499.075	195	
+11.4	18:22:18.07 -07:20:08.1	2016-05-17
+(Andrew Cameron)	Not yet 
+80
+J1822-0858
+
+Confirmed 
+(PKS 2016-01-18)	Class 1
+ Yes 
+(21.583, 2.223)	Normal
+18:22:30.0	-08:58:41.3	148.878
+448
+
+18.5
+18:22:35.11 -09:01:39.6	2015-11-17
+(Andrew Cameron)
+Not yet
+81
+J1824-1350	Confirmed 
+(PKS 2012-04-12)
+Class 1	No detection
+Normal  
+18:24:55.08
+-13:50:46.2 
+1396.602 
+549.6
+ 13.9	14.56 
+18:24:53.99 -13:52:38.3
+2011-08-28 (Cherry)	 maybe 2FGL J
+1824.5-1351e
+82
+J1825-1114 
+Confirmed 
+(PKS 2014-01-18)
+Class 1 
+Not yet
+Normal 
+18:25:05.88
+-11:14:00.6
+1925.88266
+121 
+
+17.5  
+ 	 2014-01-13 (Cherry)
+Not yet 
+83
+J1829-1009 
+Confirmed 
+(PKS 2013-07-28)  
+ 	 	 	 	 	 829	610 
+ 	19.8 
+18:29:07.17 
+-10:11:09.7	2013-07-25 (Cherry) 
+NO 
+84
+J1830-1033
+
+Confirmed 
+(PKS 2013-07-26)
+ 	 	 	18:30:11.88	‑10:33:40.7 	245 
+ 203	
+ 9.85	
+
+2013-07-24 (Cherry) 
+NO 
+85
+J1831-0428
+
+
+Confirmed 
+(PKS 2017-02-24)
+ Class 1
+No 
+Normal 
+18:31:00.12	‑04:28:30.6	1065.625
+ 219	
+ 18.35	
+
+2017-02-09 (Andrew Cameron) 
+Not yet
+86
+ J1832-0212	Confirmed 
+(PKS 2013-02-01)
+ Class1	 Yes 
+(28.807, 3.015)
+ Normal	18:32:56.76	‑02:12:43.9 
+291.929 
+325.4 
+11.9 
+ 	18:33:05.39
+-02:10:36.9
+2013-01-17 (Cherry)  
+Maybe 2FGL J1832.0-0200   
+87
+J1834-0915 	Confirmed 
+(PKS  2014-05-17) 	Class 1 	Tentative only 	Normal 	18:34:36.84	‑09:15:42	512.33 	529.2 	 	 	 	2014-05-09 (Cherry) 
+ 
+88
+ 
+J1835-0559
+Confirmed 
+(PMPS) 	Class 1 	Yes	Normal 	18:35:06	‑05:59:53.2	2221.79	776 	 	 16.2	18:35:13.36 -06:01:50.1 	2016-11-25 (Andrew Cameron) 
+Not yet 
+89
+J1835-0927
+(J1835-0927-2)
+Confirmed 
+(JBO 2011-12-11)
+Class 1  
+No detection
+Normal 
+18:35:22.92	-09:27:34.1  
+235.232 
+546.78 
+12.7	13.01 
+No 
+2011-12-07 (Cherry)	 NO
+41
+90
+J1835-0928 
+(J1835-0927-1)
+Confirmed 
+(JBO not sure when)
+Class 1	Very marginal?
+Normal 
+18:35:22.92	-09:27:34.1 
+621.734	449.55 
+ 10.5	10.54 
+No 
+2011-12-07 (Cherry)	 NO
+41
+91
+J1836-1117	Confirmed 
+(PKS  2014-05-09)  	Class 1	No 	Normal 	 18:36:06.12	 ‑11:17:12.8	496.14 	326.1 	 	 10.8	 	2014-05-08 (Cherry) 
+ 
+92
+J1838-0106	Confirmed 
+(PKS 2012-02-25)	Class 1	Confirmed	Normal
+18:38:49.56	-01:06:02.2	444.42569 
+268.9 
+ 32.8	27.13 
+18:38:56.65
+-01:05:14.8
+2011-07-11 (Cherry) 
+maybe 2FGL 
+J1839.0-0102
+93
+J1840-0221	Confirmed 
+(PKS 2012-02-26)
+Class 1 
+Weak detection 
+Normal 
+18:40:02.28
+-02:21:11.4 
+1266.77 
+345.9 
+  9.4	11.24 
+18:40:00.92
+-02:23:26.9
+2011-08-11 (Cherry) 
+ NO
+73.148 
+94
+J1840-0333 
+Confirmed 
+(PKS 2012-02-28)
+Class 1 
+Confirmed
+Normal 
+18:40:18.84
+-03:33:10.5 
+2675.676 
+195.1 
+ 18.7	20.24 
+18:40:29.68
+-03:33:38.7
+2011-08-28 (Cherry)	maybe 2FGL J
+1839.7-0334c
+95
+J1842-0759
+Confirmed 
+(PKS 2012-12-30) 
+Class 1 
+Yes (24.883 -1.838) 
+Normal 
+18:42:52.56 
+-07:59:22.3 
+1255.46407 
+188.6 
+15.0 
+ 9.82	18:42:56.30
+-07:58:33.2	2012-12-04 (Cherry) 
+NO 
+96
+ J1843-0306	Confirmed 
+(PKS 2012-12-01)
+Class 1 
+No detection
+Normal 
+18:43:53.76
+‑03:06:15.3  
+1198.6260	533.07 
+ 8.1	13.60 
+18:43:56.93
+-03:06:38.6
+2012-05-07   (Cherry)  
+2FGL J1843.7-0312c
+97
+J1843-0508 
+Confirmed 
+(PKS 2012-08-03)
+Class 1 
+Yes
+Normal 
+18:43:25.68
+‑05:08:56.0 
+671.61824 
+250.83 
+ 13.5	11.82 
+18:43:25.09
+-05:09:55.9 
+2012-05-03
+(Cherry) 
+NO 
+98
+J1847-0429 
+Confirmed 
+(PKS 2012-12-01) 
+Class 1 
+Not yet 
+Normal 
+18:47:22.2
+‑04:29:44.5 
+259.224566 
+188.307 
+12.7
+11.38 
+18:47:19.69
+-04:29:24.2
+2012-11-05 (Cherry) 
+NO 
+99
+J1851-0638
+Confirmed
+(PKS 2017-03-30)	Class 1 
+Yes 
+Normal 
+18:51:12.24	‑06:38:16.2	1920.4	 234
+
+9.52 
+18:51:32.33 -06:35:03.5	2016-06-09 (Andrew Cameron) 
+Not yet
+100
+J1854-0523
+Confirmed 
+(PKS 2016-09-13)	Class 1 
+No detection
+Normal 
+18:54:44.28	-05:23:46	543.971
+187
+
+22.98
+18:54:44.28
+-05:23:46
+2016-01-08
+(Andrew Cameron)
+Not yet
+
+#HTRU med/hi lat
+J0620-5857	267.95	-26.96	0.33824	28.4	hilat
+J0637-3050	239.68	-16.34	0.003945	15.5	hilat
+J0753-0819	227.61	9.77	2.09357	42.56	hilat
+J0808-5422	268.72	-11.57	0.526647	161.9	medlat
+J0835-4232	261.47	-1.17	0.738423	185.8	medlat
+J0904-6022	278.16	-8.79	0.340853	88.9	medlat
+J0912-3848	263.17	6.62	1.526114	63.2	medlat
+J0919-6047	279.73	-7.77	1.217008	66.9	medlat
+J0949-6900	287.83	-11.69	0.640022	92.0	medlat
+J0951-7119	289.44	-13.34	0.21238	76.3	medlat
+J1017-7156	291.56	-12.55	0.002339	94.3	medlat
+J1036-6600	289.76	-6.62	0.533502	153.3	medlat
+J1054-5944	288.64	-0.16	0.228323	253.4	medlat
+J1056-7118	293.95	-10.47	0.026310	92.8	medlat
+J1105-4357	283.51	14.89	0.351113	38.3	medlat
+J1125-5825	291.89	2.60	0.003102	124.8	medlat
+J1132-4655	289.20	13.84	0.325636	121.9	medlat
+J1142-5539	293.32	6.00	0.685360	183.1	medlat
+J1201-4547	293.81	16.19	0.47617	24.3	hilat
+J1226-6202	300.09	0.58	0.034528	362.6	medlat
+J1239-6728	301.60	-4.63	1.055480	175.9	medlat
+J1253-7408	302.98	-11.28	0.327056	89.0	medlat
+J1330-5251	308.97	9.64	0.648104	149.0	medlat
+J1337-6423	307.89	-1.96	0.009423	260.3	medlat
+J1346-4927	312.08	12.61	0.299620	76.0	medlat
+J1400-4041	316.72	20.34	4.42776	28.3	hilat
+J1403-0315	335.57	54.97	0.36269	32.9	hilat
+J1406-4656	315.91	14.05	0.007602	13.7	medlat
+J1409-6954	309.55	-8.04	0.528581	171.1	medlat
+J1417-5036	316.60	9.97	0.794875	58.2	medlat
+J1431-4717	320.06	12.26	0.002012	59.4	medlat
+J1431-5736	315.96	2.66	0.004111	131.2	medlat
+J1433-5029	318.95	9.14	1.017495	98.0	medlat
+J1442-5122	320.09	7.68	0.732061	97.0	medlat
+J1446-4701	322.50	11.43	0.002195	55.8	medlat
+J1502-6752	314.80	-8.07	0.026744	151.8	medlat
+J1517-4636	327.38	9.22	0.886610	139.0	medlat
+J1518-3950	331.23	14.85	0.49919	101.5	medlat
+J1525-5544	323.50	0.85	0.011357	126.8	medlat
+J1528-3835	333.90	14.72	0.008486	73.6	medlat
+J1530-6336	319.51	-6.11	0.910310	201.2	medlat
+J1535-4432	331.14	9.26	1.221429	123.4	medlat
+J1540-4829	329.43	5.54	1.272842	119.0	medlat
+J1543-5149	327.92	2.48	0.002057	50.9	medlat
+J1546-4552	331.89	6.99	0.003575	68.4	medlat
+J1552-4433	333.62	7.40	0.674068	77.4	medlat
+J1552-6213	322.29	-6.34	0.198839	122.2	medlat
+J1558-6735	319.34	-10.90	0.267268	105.44	medlat
+J1607-6447	321.99	-9.52	0.298116	89.3	medlat
+J1612-5811	327.00	-4.96	0.615520	172.0	medlat
+J1614-3846	340.66	8.77	0.464098	111.7	medlat
+J1622-3752	342.37	8.47	0.731471	151.2	medlat
+J1622-4950	333.85	-0.10	4.326450	820.0	medlat
+J1622-6617	321.98	-11.56	0.023623	87.9	medlat
+J1625-4914	334.57	0.03	0.355856	717.0	medlat
+J1625-6620	322.20	-11.88	0.450868	83.6	medlat
+J1627-5933	327.33	-7.44	0.354239	92.0	medlat
+J1629-3635	344.31	8.18	2.988134	104.0	medlat
+J1629-3827	342.83	7.02	0.52637	127.8	medlat
+J1634-5638	330.18	-5.95	0.224202	146.7	medlat
+J1635-2616	353.12	14.02	0.510455	94.5	medlat
+J1638-4233	341.02	2.91	0.510930	406.0	medlat
+J1648-3605	347.12	5.79	0.212316	222.0	medlat
+J1650-6046	328.24	-10.18	0.583693	105.6	medlat
+J1653-2056	359.99	14.28	0.004129	56.5	medlat
+J1654-2636	355.50	10.60	1.623730	129.2	medlat
+J1701-4419	342.28	-1.32	0.755535	413.0	medlat
+J1703-1848	3.13	13.62	1.27024749	45.7	medlat
+J1705-1908	3.08	13.12	0.00248	57.5	medlat
+J1705-4335	343.38	-1.57	0.222561	184.6	medlat
+J1705-5230	336.06	-6.85	0.230708	170.5	medlat
+J1705-6137	328.70	-12.24	0.808546	87.0	medlat
+J1708-3506	350.47	3.12	0.004505	146.8	medlat
+J1708-4406	343.47	-2.40	0.865242	220.6	medlat
+J1709-2613	357.83	8.03	0.954167	140.7	medlat
+J1709-6628	324.85	-15.33	0.40110	61.7	hilat
+J1715-4703	341.55	-5.13	0.555822	285.2	medlat
+J1719-1438	8.86	12.84	0.005790	36.8	medlat
+J1719-2334	1.37	7.84	0.453990	101.8	medlat
+J1720-2451	0.42	7.00	0.874263	94.1	medlat
+J1729-2121	4.50	7.22	0.066293	35.0	medlat
+J1731-1847	6.89	8.15	0.002345	106.5	medlat
+J1733-5516	336.22	-11.90	1.011225	81.4	medlat
+J1745-3816	352.05	-4.78	0.698356	159.6	medlat
+J1745-5342	338.46	-12.46	0.355666	124.4	medlat
+J1748-1024	16.18	9.00	1.578515	88.6	medlat
+J1748-5416	338.17	-13.18	0.30758	69.1	medlat
+J1749-4928	342.59	-11.11	0.445826	52.4	medlat
+J1754+0036	26.92	12.84	0.0044108	70.3	medlat
+J1754-2421	4.98	0.65	2.090263	788.8	medlat
+J1755-0900	18.33	8.18	0.190710	63.3	medlat
+J1755-3715	353.87	-6.01	0.012786	167.4	medlat
+J1757-1503	13.35	4.72	0.179354	150.6	medlat
+J1759-1025	17.62	6.51	2.512312	129.9	medlat
+J1801-3210	358.92	-4.58	0.007454	177.7	medlat
+J1802-0521	22.40	8.37	1.680657	121.5	medlat
+J1802-3349	357.65	-5.62	2.461052	254.0	medlat
+J1803-3328	358.02	-5.64	0.633412	171.0	medlat
+J1804-2858	2.00	-3.48	0.00149	232.4	medlat
+J1805-2949	1.42	-4.22	0.428343	159.6	medlat
+J1810-0120	26.96	8.61	0.744976	135.5	medlat
+J1811-2405	7.07	-2.56	0.002661	60.6	medlat
+J1811-4930	344.24	-14.25	1.432704	49.0	medlat
+J1812-2749	3.97	-4.59	0.236983	105.7	medlat
+J1812-3046	1.43	-5.97	0.587468	147.5	medlat
+J1814-0528	23.76	5.76	1.014346	119.0	medlat
+J1816-1938	11.59	-1.64	2.046845	497.8	medlat
+J1818-0152	27.50	6.54	0.837547	209.7	medlat
+J1825-0135	28.49	5.15	0.22373	79.6	medlat
+J1825-0322	27.00	4.12	0.004554	119.5	medlat
+J1825-3103	2.40	-8.70	2.382205	119.7	medlat
+J1826-2413	8.54	-5.62	0.004696	81.8	medlat
+J1832-0835	23.10	0.26	0.002719	28.2	medlat
+J1835-0847	23.24	-0.37	0.84650	850.4	medlat
+J1837-0820	23.96	-0.77	1.099200	506.6	medlat
+J1840-0438	27.59	0.24	0.422321	379.1	medlat
+J1842-2758	6.74	-10.46	0.815269	61.6	medlat
+J1843-4033	355.01	-15.77	0.32418	61.5	hilat
+J1846-4249	353.04	-17.12	2.27319	67.7	hilat
+J1854-1559	19.02	-7.95	3.453121	157.0	medlat
+J1900-0928	25.47	-6.24	1.424005	164.0	medlat
+J1902-1039	24.62	-7.23	0.786770	91.0	medlat
+J1903-0848	26.38	-6.55	0.88732	65.6	medlat
+J1904-1624	19.65	-10.28	1.541460	145.8	medlat
+J1906-1525	20.68	-10.40	0.632231	67.8	medlat
+J1918-6553	330.10	-27.27	0.52679	20.2	hilat
+J1920-0946	27.46	-10.93	1.037830	93.2	medlat
+J1933-5704	340.22	-28.03	0.35464	44.4	hilat
+J1941+0237	40.95	-9.69	1.23234	82.7	hilat
+J1942+0150	40.48	-10.47	1.40478	121.4	hilat
+J1947-1858	21.54	-20.62	0.002603	25.2	hilat
+J2003-0934	32.33	-20.20	0.00318	30.7	hilat
+J2006-1311	29.14	-22.39	0.37428	20.5	hilat
+J2049-5501	342.67	-38.60	1.54483	35.0	hilat
+J2055-6715	327.37	-36.66	0.73408	35.8	hilat
+J2236-5526	334.32	-52.63	0.00691	20.2	hilat
+J2322-2652	28.54	-70.10	0.00346	6.2	hilat
+J2359-6537	311.42	-50.63	0.60754	13.0	hilat 
+
+
+#PALFA
+Year	Pulsar	Period(ms)	DM(pc/cc)	Periodicity	Pulsations	Other/Notes	Timing
+2018 (3)	J1855+06	528.820	252.7	8 Jun 2018	 	 	 
+ 	J1913+05	662.00	330.1	10 Oct 2017
+26 Mar 2018	 	 	 
+ 	J1924+19	1277.89	301.9	10 Oct 2017
+26 Mar 2018	 	 	 
+2017 (9)	J0625+12	 	101.9	 	1 Mar 2017	RRAT	 
+ 	J1843+01	1267.02	279.2	1 Oct 2017	1 Oct 2017	 	 
+ 	J1901+11	409.14	270.4	25 May 2017	25 May 2017	Quicklook discovery	 
+ 	J1908+13	 	171.3	 	27 July 2017	RRAT	 
+ 	J1911+1336	300.06	322.3	14 June 2017
+11 Mar 2018	 	Nuller	 
+ 	J1914+08	455.49	363.7	18 May 2017
+11 Mar 2018	 	 	 
+ 	J1936+18	58.35	125.5	25 May 2017	 	Quicklook discovery	 
+ 	J1936+24	1.90	94.5	27 Aug 2017
+11 Mar 2018	 	MSP	 
+ 	J1946+20	16.95	93.8	13 Aug 2017	 	Quicklook discovery	 
+2016 (8)	J0623+15	 	92.5	 	11 June 2016	RRAT	 
+ 	J1849+04	421.11	191.8	14 Oct 2016	14 Oct 2016	Quicklook discovery	 
+ 	J1856+09	2170.71	192.8	20 June 2016
+3 Aug 2016	20 June 2016	 	 
+ 	J1857+07	29.12	159.5	29 Aug 2016
+30 Sep 2016	 	Quicklook discovery
+Binary	 
+ 	J1921+09	562.29	134.2	18 July 2016
+9 Aug 2016	 	Quicklook discovery	 
+ 	J1921+19	2.65	64.8	19 July 2016
+9 Aug 2016	 	MSP
+Quicklook discovery	 
+ 	J1928+12	3.02	179.2	7 Oct 2015
+11 May 2016	 	MSP	 
+ 	J1930+24	5.77	69.7	28 Nov 2016	 	MSP
+Quicklook discovery	 
+2015 (24)	J1851+00	22.83	107.4	2 July 2015	 	E@H discovery	 
+ 	J1852+00	1920.66	590.4	4 June 2015
+13 June 2015	 	Quicklook discovery	 
+ 	J1853+0009	33.41	192.0	6 July 2015	 	E@H discovery	 
+ 	J1853+0029	938.32	230.0	23 Sep 2015
+25 Sep 2015	 	E@H discovery	 
+ 	J1853+04	1320.65	560.4	10 Dec 2015	10 Dec 2015	 	 
+ 	J1859+07	 	303.1	 	11 Dec 2015
+27 Apr 2016	RRAT
+dedispersed pulse	 
+ 	J1903+09	166.31	362.9	26 Aug 2015	 	Quicklook discovery	 
+ 	J1905+0414	156.48	381.1	 	20 Oct 2015
+28 Apr 2016	RRAT
+dedispersed pulse	 
+ 	J1906+04	2.08	142.9	22 Oct 2015
+13 May 2016	 	MSP	 
+ 	J1910+04	664.68	297.3	28 Sep 2015	 	Quicklook discovery	 
+ 	J1911+1301	1010.43	376.0	8 Dec 2015	 	 	Jodrell (Andrew)
+ 	J1931+18	234.12	463.7	21 Feb 2015
+22 Feb 2015	 	Quicklook discovery	 
+ 	J1935+18	843.52	349.9	25 Sep 2015	 	 	 
+ 	J1936+21	31.60	73.9	21 Sep 2015	 	 	 
+ 	J1948+28	932.78	305.0	5 Jan 2015
+6 Jan 2015	 	E@H discovery	 
+ 	J1950+30	2788.69	247.8	28 May 2015
+13 June 2015	 	Quicklook discovery	 
+ 	J1952+30	1665.60	184.9	20 July 2015	20 July 2015	 	 
+ 	J1953+28	1010.99	194.0	2 Jan 2015
+3 Jan 2015	 	E@H discovery	 
+ 	J1955+29	1073.77	206.0	22 June 2015	 	E@H discovery	 
+ 	J1958+30	1098.53	218.6	3 Sep 2015	3 Sep 2015	 	 
+ 	J2000+29	3073.70	136.5	24 Nov 2015	24 Nov 2015	 	 
+ 	J2003+29	1009.87	208.7	25 Jan 2015
+27 Jan 2015	 	Quicklook discovery	 
+ 	J2008+31	226.11	222.9	19 June 2015
+21 June 2015	 	Quicklook discovery	 
+ 	J2010+30	4.81	133.8	14 July 2015	 	MSP
+Quicklook discovery	 
+2014 (14)	J1902+02	415.32	281.2	24 Feb 2014	 	 	 
+ 	J1907+05	168.67	460.1	27 Jul 2014
+25 Aug 2014	 	 	 
+ 	J1910+07	538.69	256.5	15 Oct 2014
+5 Nov 2014	 	E@H discovery	 
+ 	J1911+10	190.89	448.2	8 Sep 2014
+5 Nov 2014	 	 	 
+ 	J1912+08	~164	96	 	24 Jan 2014	RRAT
+dispersed pulse	 
+ 	J1913+0617	5.03	155.8	5 Aug 2014
+27 Aug 2014	 	MSP	 
+ 	J1914+06	878.86	206.7	7 Apr 2014	24 Jan 2014
+7 Apr 2014	dispersed pulse	 
+ 	J1915+06	644.10	214.5	24 Jan 2014	24 Jan 2014	RRAT
+dispersed pulse	 
+ 	J1921+16	936.43	204.7	7 Feb 2014	 	 	 
+ 	J1924+1628	375.09	542.9	14 Jan 2014
+27 Jan 2014	 	 	Jodrell (Andrew)
+ 	J1926+16	308.30	32.9	10 Mar 2014
+13 Mar 2014	 	 	 
+ 	J1932+17	41.82	53.2	23 Jan 2014	 	 	 
+ 	J1937+16	3.95	105.9	12 Jun 2014
+18 Jun 2014	 	MSP
+Quicklook discovery	 
+ 	J1954+25	931.28	183.8	24 Oct 2014	 	Binary
+Quicklook discovery	 
+2013 (15)	J0532+33	 	557.4	 	Aug 2013	FRB
+dispersed pulse	 
+ 	J0608+16	945.70	84.0	18 Apr 2013	18 Apr 2013	 	Jodrell (Andrew)
+ 	J1849+01	1832.00	213.6	25 Nov 2013	25 Nov 2013	RRAT	 
+ 	J1850+02	4.48	540.5	10 Sep 2013
+11 Sep 2013	 	MSP
+Highest MSP DM	Jodrell (Andrew)
+ 	J1851+0232	344.02	605.4	19 Dec 2012
+11 Feb 2013	 	 	Jodrell (Andrew)
+ 	J1854+00	767.33	532.9	15 Sep 2013
+19 Sep 2013	 	 	 
+ 	J1859+03	1511.71	555.1	29 July 2013	 	E@H discovery	Jodrell (Andrew)
+ 	J1901+02	885.24	403.0	7 Jan 2013	 	 	Jodrell (Andrew)
+ 	J1903+04	1151.39	473.5	5 Sep 2013	11 Sep 2013	 	Jodrell (Andrew)
+ 	J1906+03	~1259	212	 	16 Apr 2013	RRAT
+Position:
+19:06:54+03:36:38	 
+ 	J1906+0725	1536.51	480.4	10 Sep 2013
+18 Sep 2013	 	 	Jodrell (Andrew)
+ 	J1928+1725	289.8	136	12 Nov 2013	12 Nov 2013
+12 Nov 2013	RRAT
+dispersed pulse	 
+ 	J1932+1459	1864.30	82.8	12 Nov 2013	 	Quicklook discovery	Jodrell (Andrew)
+ 	J1936+20	1390.88	205.1	8 Sep 2013
+19 Sep 2013	 	Position:
+19:36:26.02+20:42:04.7	 
+ 	J1943+22	5.08	174.1	8 Apr 2013
+24 Apr 2013	 	MSP
+Quicklook discovery	Jodrell (Andrew)
+2012 (29)	J0557+15	2.55	102.7	3 Feb 2012
+24 Feb 2012	 	MSP	Jodrell (Andrew)
+Arecibo (Ingrid)
+ 	J1851+0242	1497.04	534.1	27 Mar 2012
+29 May 2012	 	E@H discovery	 
+ 	J1855+03	1633.46	625.6	27 Feb 2012	 	E@H discovery	Jodrell (Andrew)
+Arecibo (Patrick)
+ 	J1857+02	772.75	681.4	12 Mar 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1858+0319	867.38	289.8	24 Feb 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1900+04	312.30	638.9	10 Apr 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1901+0510	657.15	417.9	21 Mar 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1903+06	791.15	338.3	6 Aug 2012
+7 Aug 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1905+0451	6.09	183.1	23 Oct 2011
+1 Mar 2012	 	MSP	Jodrell (Andrew)
+Arecibo (Patrick)
+ 	J1905+10	1726.88	165.7	30 Oct 2011	30 Oct 2011	 	Arecibo (Patrick)
+Jodrell (Andrew)
+ 	J1907+09	1526.80	189.9	11 Feb 2012
+20 Feb 2012	 	E@H discovery	Jodrell (Andrew)
+Arecibo (Patrick)
+ 	J1908+0831	512.20	698.1	19 July 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1912+09	323.88	490.9	23 July 2012
+7 Aug 2012	 	E@H discovery	Arecibo (Patrick)
+ 	J1913+0656	1257.17	146.5	11 Feb 2013	27 Sep 2012	dispersed pulse	Jodrell (Andrew)
+ 	J1913+10	190.07	234.1	28 Jan 2012
+20 Feb 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1913+1102	27.29	341.2	15 Feb 2012
+20 Feb 2012	 	E@H discovery	Arecibo (Patrick)
+ 	J1914+08	440.04	289.2	9 Oct 2012	 	Correct position:
+19:14:11.5+08:42:15.4	Arecibo (Patrick)
+Jodrell (Andrew)
+ 	J1914+14	1159.48	205.9	9 Jan 2012
+11 Jan 2012	 	E@H discovery	Arecibo (Patrick)
+ 	J1915+1149	100.04	702.1	24 Sep 2012
+24 Sep 2012
+16 Nov 2012	 	 	Arecibo (Patrick)
+ 	J1917+11	~5060	319	 	7 Nov 2012	RRAT	 
+ 	J1918+1310	856.74	247.4	13 Sep 2012
+20 Sep 2012	 	 	 
+ 	J1922+11	562.07	331.3	2 Jan 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J1928+14	1010.94	104.2	30 Oct 2012	30 Oct 2012	 	Jodrell (Andrew)
+ 	J1929+11	~3218	80	 	7 Sep 2012	RRAT
+Correct position:
+19:29:13.4+11:54:23.7
+dispersed pulse	 
+ 	J1929+14	866.92	157.5	1 Dec 2012
+8 Feb 2013	 	Quicklook discovery	Jodrell (Andrew)
+ 	J1933+17	21.51	156.6	27 Aug 2012
+8 Sep 2012	 	 	 
+ 	J1938+20	2.63	237.1	15 Sep 2012
+16 Sep 2012	 	MSP	 
+ 	J1953+24	193.41	80.8	16 Apr 2012	 	E@H discovery	Jodrell (Andrew)
+ 	J2005+26	665.85	158.5	9 Jan 2012	 	E@H discovery	Jodrell (Andrew)
+2011 (28)	J1853+03	585.53	290.2	15 Dec 2011	15 Dec 2011	 	Arecibo (Patrick)
+ 	J1854+0320	628.54	479.5	31 Oct 2011	31 Oct 2011	Quicklook discovery	Jodrell (Andrew)
+ 	J1901+0459	877.06	1103.6	4 Nov 2011
+14 Nov 2011	 	 	Jodrell (Andrew)
+ 	J1902+03	7.79	253.7	16 Dec 2011
+4 Mar 2012	 	MSP	Jodrell (Andrew)
+Arecibo (Patrick)
+ 	J1906+01	2.79	127.0	14 June 2011
+11 Sept 2011	 	MSP
+Use 11 Sep position	Arecibo (Kevin)
+ 	J1906+05	397.59	104.6	5 Dec 2011	 	E@H discovery	Jodrell (Andrew)
+ 	J1907+02	618.77	250.4	11 June 2011	 	327 MHz	Jodrell (Andrew)
+ 	J1907+06	323.62	427.6	4 May 2011
+5 May 2011	 	Young pulsar!
+Quicklook discovery	Jodrell (Andrew)
+ 	J1908+0833	167.61	511.5	30 Apr 2011	 	Quicklook discovery	Arecibo (Kevin)
+ 	J1909+11	448.95	201.9	15 Sep 2011
+14 Nov 2011	 	 	Arecibo (Kevin)
+Jodrell (Andrew)
+ 	J1909+12	1229.34	292.5	14 Dec 2011	 	E@H discovery	GBT (Ryan)
+ 	J1910+05	308.04	305.9	11 Nov 2011	11 Nov 2011	Possible nuller
+Quicklook discovery	Jodrell (Andrew)
+ 	J1910+1017	411.09	636.6	4 Nov 2011
+4 Nov 2011	 	E@H discovery	Arecibo (Patrick)
+ 	J1910+1027	531.47	705.7	5 Nov 2011
+14 Nov 2011	 	 	 
+ 	J1911+09	273.71	334.7	14 Nov 2011	 	 	GBT (Ryan)
+ 	J1913+1103	923.91	628.9	15 Sep 2011	 	 	Arecibo (Kevin)
+ 	J1914+07	18.51	224.7	5 Nov 2011
+14 Nov 2011	 	MSP	Jodrell (Andrew)
+ 	J1915+1144	173.65	338.3	15 Sep 2011	 	 	Arecibo (Kevin)
+ 	J1924+17	758.43	527.4	7 Nov 2011
+14 Nov 2011	 	 	GBT (Ryan)
+ 	J1925+17	75.66	223.7	4 Nov 2011
+14 Nov 2011	 	 	GBT (Ryan)
+Jodrell (Andrew)
+ 	J1930+14	425.71	209.2	15 Sep 2011
+14 Nov 2011	 	 	Arecibo (Kevin)
+ 	J1931+14	1779.23	239.3	15 Sep 2011	15 Sep 2011	 	Arecibo (Kevin)
+Jodrell (Andrew)
+ 	J1934+19	230.99	97.6	15 Sep 2011
+14 Nov 2011	 	 	Arecibo (Kevin)
+ 	J1940+22	258.89	218.1	16 Dec 2011	 	 	Jodrell (Andrew)
+ 	J1950+24	4.30	142.2	4 Oct 2011
+5 Oct 2011	 	MSP
+E@H discovery
+Use 5 Oct position	Arecibo (Benjamin)
+Jodrell (Andrew)
+ 	J1952+25	1077.67	245.4	27 Oct 2011
+28 Oct 2011	 	Possible nuller
+E@H discovery
+Use 28 Oct position	Arecibo (Patrick)
+ 	J1957+25	3.96	44.1	2 Sep 2010
+12 Sep 2011	 	MSP	Arecibo (Kevin)
+ 	J2010+31	1551.47	251	24 Jan 2014	5 Aug 2011	 	 
+2010 (4)	J1858+02	197.64	496.7	6 Jan 2010
+28 Jan 2010	 	 	Arecibo (Kevin)
+ 	J1944+22	3.62	184.7	6 Jan 2010
+27 Jan 2010	 	MSP	Jodrell (Andrew)
+ 	J1952+26	20.73	316.3	27 Jul 2010	 	MSP
+E@H discovery	Arecibo (Patrick)
+ 	J2007+27	24.49	127.3	12 Jul 2010	 	E@H discovery	Jodrell (Andrew)
+2009 (4)	J1844+01	4.19	148.1	19 Nov 2009	 	MSP	Jodrell (Andrew)
+ 	J1850+01	3.56	119.1	19 Nov 2009	 	MSP	Jodrell (Andrew)
+ 	J1859+06	508.56	381.9	26 Nov 2009	 	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1900+03	4.91	249.9	13 Feb 2009	 	MSP	Jodrell (Andrew)
+2008 (8)	J0611+14	270.33	35.4	18 Feb 2008	 	prepfold	Arecibo (David N.)
+Nancay (Ismael)
+Jodrell (Andrew)
+ 	J0627+16	2180.49	125	 	23 Apr 2008
+23 Apr 2008
+2 Nov 2008	multi-beam
+327 MHz	Arecibo (David N.)
+ 	J1854+03	4559.62	216	 	2 Apr 2008
+2 Apr 2008
+1 May 2008	RRAT	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1905+09	3487.84	288	 	9 Apr 2008
+9 Apr 2008	RRAT	 
+ 	J1917+17	334.72	204.9	7 Dec 2008
+14 Dec 2008	 	prepfold	Arecibo (David N.)
+ 	J1919+17	2080.9	148.4	13 March 2007
+22 June 2008	13 March 2007
+22 June 2008	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1946+24	4729.34	96	 	24 Mar 2008
+24 Mar 2008	RRAT
+multi-beam
+pulse	Arecibo (David N.)
+ 	J1955+25	4.87	209.9	9 Feb 2008	 	Isolated MSP
+prepfold	Arecibo (Julia & Paulo) 
+Nancay (Ismael)
+Jodrell (Andrew)
+2007 (3)	J1909+0640	741.73	35.5	 	22 June 2007
+28 Mar 2008	prepfold
+pulse	Arecibo (David N.)
+ 	J1947+19	157.50	176.5	28 Oct 2007	 	prepfold	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1949+31	13.14	164.4	12 Oct 2007(#13)	 	MSP
+prepfold	Arecibo (Julia & Paulo) 
+Nancay (Ismael)
+Jodrell (Andrew)
+2006 (12)	J1848+03	191.45	353.3	4 Dec 2006	 	 	Arecibo (David N.)
+ 	J1850+04	290.74	296.8	29 Oct 2006	 	 	Arecibo (David N.)
+ 	J1856+02	80.89	621.8	16 Apr 2006
+21 Apr 2006	 	Young pulsar	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1858+03	256.83	424.0	2 Feb 2006	 	 	Arecibo (David N.)
+ 	J1916+12	227.36	254.4	14 Apr 2006	14 Apr 2006	 	Arecibo (David N.)
+ 	J1924+1631	2935.16	565.3	3 Dec 2006
+3 Dec 2006	3 Dec 2006
+3 Dec 2006	 	Arecibo (David N.)
+ 	J1934+24	178.44	339.2	15 Oct 2006	 	 	Arecibo (David N.)
+ 	J1948+23	528.35	226.1	14 July 2006
+8 Sept 2006
+9 Sept 2006
+10 Sept 2006	14 July 2006	 	Jodrell (Andrew)
+ 	J1948+25	196.61	282.6	8 Apr 2006
+14 Apr 2006	8 Apr 2006
+14 Apr 2006	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J2005+35	615.06	353.3	11 Oct 2006
+11 Oct 2006
+16 Oct 2006	16 Oct 2006	 	Arecibo (David N.)
+ 	J2007+31	608.18	204.9	8 Apr 2006	 	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J2013+31	276.04	134.3	15 Oct 2006
+17 Oct 2006	 	 	Arecibo (David N.)
+2005 (13)	J1855+02	246.83	848.0	2 Sept 2005
+3 Sept 2005	 	 	Arecibo (David N.)
+ 	J1903+03	2.15	297.6	7 Oct 2005	 	1st MSP	Nancay (Ismael)
+Jodrell (Andrew)
+ 	J1909+07	237.15	537.0	6 Nov 2005	 	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1919+13	571.44	622.0	1 Sept 2005
+2 Sept 2005
+8 Apr 2006	 	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1928+15	402.7	242.0	 	4 Nov 2005
+4 Nov 2005	RRAT	n/a
+(Not seen again)
+ 	J1938+2010	686.97	310.9	04 Apr 2005	 	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1940+23	546.85	268.5	4 Sept 2005
+6 Sept 2005	 	 	Arecibo (David N.)
+ 	J1941+25	2306.14	310.9	23 Dec 2005	23 Dec 2005	prepfold	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1946+25	515.17	244.0	25 Aug 2005
+6 Apr 2006
+10 Apr 2006	 	prepfold	Arecibo (David N.)
+Nancay (Ismael)
+Jodrell (Andrew)
+ 	J1949+23	1319.53	196.1	11 Oct 2005	 	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1953+27	1333.84	310.9	29 Aug 2005
+5 Sept 2005	 	 	Arecibo (David N.)
+ 	J2006+31	163.68	110.0	29 Aug 2005
+5 Sept 2005	 	 	Arecibo (David N.)
+Nancay (Ismael)
+Jodrell (Andrew)
+ 	J2010+28	565.35	105.0	20 Jul 2005
+6 Sept 2005	 	 	Arecibo (David N.)
+Nancay (Ismael)
+Jodrell (Andrew)
+2004 (10)	J0540+3207	524.03	61.9	08 Aug 2004	08 Aug 2004	 	Arecibo (David N.)
+Nancay (Ismael)
+Jodrell (Andrew)
+ 	J0628+09	1241.42	88.0	21 Sept 2004	06 Sept 2004	21 Sept 2004 folder	Arecibo (David N.)
+ 	J1904+07	208.96	275.0	28 Sep 2004	28 Sep 2004	 	Arecibo (David N.)
+Jodrell (Andrew)
+ 	J1905+08	218.24	452.2	04 Oct 2004	 	 	Arecibo (David N.)
+ 	J1906+0746	144.00	217.8	29 Sep 2004	 	Relativistic Binary!	Arecibo (David N.)
+Nancay (Ismael)
+Jodrell (Andrew)
+ 	J1928+1746	68.72	176.9	02 Aug 2004	 	Young pulsar	Arecibo (David N.)
+Nancay (Ismael)
+Jodrell (Andrew)
+ 	J2009+33	1438.36	367.4	05 Aug 2004
+28 Aug 2004	 	 	Arecibo (David N.)
+ 	J2010+32	1442.23	438.1	27 Sep 2004	 	 	Arecibo (David N.)
+ 	J2011+33	931.66	310.9	29 Sep 2004	 	 	Arecibo (David N.)
+ J2018+34
+
+#AO 327Hz Drift
+2018 (4)	J0301+35	568.32	57.4	30 Apr 2018	30 Apr 2018	 	 	NRL
+ 	J1854+36	1300.22	59.8	2 May 2018	2 May 2018	 	 	NRL
+ 	J1907+34	 	64.9	 	30 Apr 2018	RRAT	 	NRL
+ 	J2357+24	 	8.6	 	30 Apr 2018	RRAT	 	NRL
+2017 (5)	J0916+06	40.77	19.2	22 Jun 2017	 	 	 	MPIfR
+ 	J1531+05	1419.82	31.6	27 Apr 2017	27 Apr 2017	 	 	NRL
+ 	J2202+21	1357.27	17.9	1 May 2017	1 May 2017	 	 	NRL
+ 	J2212+24	3.91	25.2	10 Nov 2017
+5 Dec 2017	 	MSP	 	MPIfR
+ 	J2251+24	1797.62	34.6	18 Sep 2017	18 Sep 2017	 	 	NRL
+2016 (12)	J0732+23	4.09	44.7	7 Oct 2016
+9 Dec 2016	 	MSP	 	UNM
+ 	J1216+31	837.8	15.6	5 Feb 2017	10 Nov 2016	 	 	NRL
+ 	J1743+20	252.58	19.8	26 Apr 2016	5 Apr 2016
+26 Apr 2016	 	 	NRL
+ 	J1913+19	2376.16	94.1	14 Nov 2016	16 Jul 2014
+14 Nov 2016	Original detection 
+during hurricane Isaac	 	NRL
+ 	J1917+31	1840.24	80.8	12 Nov 2016	11 Nov 2016	 	 	NRL
+ 	J2055+15	2.16	40.4	16 Feb 2016	 	MSP
+Binary	 	UNM
+ 	J2116+13	2.21	30.3	29 Feb 2016	 	MSP	 	UNM
+ 	J2151+19	1033.72	30.9	11 Jul 2016	19 Apr 2016	 	 	NRL
+ 	J2301+20	5.94	32.4	25 Feb 2016	 	MSP	 	UNM
+ 	J2334+20	 	13.2	 	10 Apr 2016	RRAT	 	NRL
+ 	J2347+02	1383.47	15.9	1 Mar 2016	15 Apr 2016	 	 	UNM
+ 	J2354+04	956.35	13.0	23 Feb 2016	9 Apr 2016	 	 	UNM
+2015 (7)	J0354+08	998.88	66.0	19 May 2015	30 Apr 2015	 	 	WVU
+ 	J0630+19	1248.55	48.3	16 Apr 2015	9 Apr 2015
+16 Apr 2015	RRAT	 	NRL
+ 	J1554+18	 	23.9	 	13 Sep 2014
+19 May 2015	RRAT	 	NRL
+ 	J1743+05	1473.64	56.1	30 Apr 2015	21 May 2014	 	 	NRL
+ 	J1749+16	2311.32	59.0	30 Apr 2015	23 Oct 2014
+30 Apr 2015	Nuller	 	NRL
+ 	J1750+07	1908.81	55.4	30 Apr 2015	8 May 2014
+30 Apr 2015	Nuller	 	NRL
+ 	J1956+07	5012.48	61.9	12 May 2015	1 May 2015
+1 May 2015
+12 May 2015	 	 	NRL
+2014 (21)	J0011+08	2552.87	24.9	6 Aug 2014	21 May 2014
+6 Aug 2014	 	 	NRL
+ 	J0050+03	1366.56	26.5	6 Aug 2014	22 May 2014
+6 Aug 2014	 	 	NRL
+ 	J0156+04	 	27.5	 	20 May 2014	RRAT	No redetection	NRL
+ 	J0544+20	 	56.9	 	7 Feb 2014
+22 Mar 2014
+19 Apr 2014	RRAT	 	NRL
+ 	J0550+09	~1745	86.6	 	15 Oct 2014
+23 Oct 2014	RRAT	 	NRL
+ 	J0611+04	1674.43	69.9	3 Feb 2015	22 May 2014
+3 Feb 2015	 	 	NRL
+ 	J1148+08	1624.78	26.8	28 Apr 2014	28 Apr 2014	Possible nuller	 	F&M
+ 	J1411+25	62.43	12.4	9 Sep 2014
+5 Oct 2014	 	430 MHz
+Binary	 	UTB
+ 	J1433+00	 	23.5	 	18 Jul 2014
+3 Feb 2015	RRAT	 	NRL
+ 	J1537+17	690.34	34.7	1 Sep 2014
+24 Sep 2014	 	 	 	UTB
+ 	J1603+18	~503	29.7	 	16 Sep 2014
+7 Feb 2015
+7 Feb 2015	RRAT	 	NRL
+ 	J1656+00	1497.85	46.9	5 Aug 2014	20 May 2014
+5 Aug 2014	 	 	NRL
+ 	J1717+03	~3901	25.6	 	22 Jan 2014
+5 Aug 2014	RRAT	 	NRL
+ 	J1720+00	~3353	46.2	 	20 May 2014
+5 Aug 2014	RRAT	 	NRL
+ 	J1738+04	1391.79	23.3	2 Feb 2015	15 Oct 2014	Nuller	 	NRL
+ 	J1832+27	631.70	47.1	14 Oct 2014	 	 	 	UTB
+ 	J1938+14	2902.51	74.2	2 Feb 2015	23 Oct 2014	 	 	NRL
+ 	J1941+01	1404.73	133.3	5 Aug 2014	15 May 2014	Mode switching	 	NRL
+ 	J1946+14	2282.44	50.3	25 Nov 2014	23 Oct 2014
+25 Nov 2014	 	 	NRL
+ 	J2059+10	953.89	60.7	10 Oct 2014
+17 Oct 2014	 	 	 	UTB
+ 	J2105+07	3746.63	52.6	18 Sep 2014	15 Sep 2014	 	 	NRL
+2013 (16)	J0154+18	2.36	19.8	11 Sep 2013	 	MSP	Joey	UTB
+ 	J0225+17	390.31	20.4	15 Sep 2013	15 Sep 2013	 	 	UTB
+ 	J0343+06	1007.64	46.3	7 Dec 2013	7 Dec 2013	Nuller	 	UTB
+ 	J0509+08	4.06	38.3	18 Apr 2013
+19 Apr 2013	 	MSP
+Binary	Pete	WVU
+ 	J0640-00	2409.49	64.8	22 Jan 2013
+19 Sep 2013	22 Jan 2013	 	 	UTB
+ 	J0709+05	34.43	44.3	21 Oct 2013
+4 Nov 2013	 	Binary	Joey	UTB
+ 	J0806+08	2063.10	46.2	18 June 2013
+4 July 2013	18 June 2013	 	 	UTB
+ 	J0928+06	2060.36	49.9	1 July 2013	1 July 2013	 	 	UTB
+ 	J1628+06	1381.77	52.2	20 Oct 2013	17 Dec 2013	 	 	UTB
+ 	J1638+11	1678.47	53.7	27 Nov 2013	27 Nov 2013	 	 	UTB
+ 	J1726-00	1308.62	56.9	24 Mar 2013	 	 	 	UTB
+ 	J1802+03	664.26	77.3	13 Jan 2013
+11 Mar 2013	 	 	 	AO
+ 	J1937-00	240.15	68.6	11 July 2013
+23 July 2013	 	 	 	UTB
+ 	J2050+18	5048.3	63.3	10 Sep 2013	10 Sep 2013	 	 	UTB
+ 	J2234+06	3.58	10.8	4 Jan 2013
+2 Feb 2013	 	MSP
+Binary	Kevin	UTB
+ 	J2329+16	632.07	30.8	4 Apr 2013	4 Apr 2013	 	 	UTB
+2012 (13)	J0158+21	505.28	19.6	30 Aug 2012	 	 	 	UTB
+ 	J0229+20	806.88	26.5	3 Sep 2012	3 Sep 2012	Possible nuller	 	UTB
+ 	J0244+14	2127.48	30.2	10 Aug 2012
+22 Aug 2012	10 Aug 2012	 	 	UTB
+ 	J0453+16	45.78	29.2	10 Aug 2012
+22 Aug 2012	 	Binary	Joey	UTB
+ 	J0457+23	504.91	58.9	19 Aug 2012
+22 Aug 2012	19 Aug 2012	 	 	UTB
+ 	J0608+00	1076.19	48.05	6 Oct 2012	6 Oct 2012	 	 	UTB
+ 	J0628+06	346.49	86.53	26 Nov 2012	 	Basic params published
+by Burgay et al. 2013	 	UTB
+ 	J0824+00	9.86	34.6	27 Oct 2012
+16 Apr 2013	 	MSP
+Binary	Joey	UTB
+ 	J1010+15*	 	42.15	 	27 Oct 2012
+27 Oct 2012	RRAT
+Use file name position	 	WVU
+ 	J1807+04	798.85	52.67	20 Oct 2012
+23 July 2013	20 Oct 2012	 	 	UTB
+ 	J1821+01	33.78	51.78	21 Oct 2012
+3 Nov 2012	 	Timing sol. published
+by Rosen et al. 2013	 	UTB
+ 	J1945+07	1073.94	62.43	11 Oct 2012	11 Oct 2012	 	 	UTB
+ 	J2340+08	303.30	23.99	14 Oct 2012	14 Oct 2012	 	 	UTB
+2011 (1)	J2204+27	84.69	35.1	24 Aug 2011
+31 Aug 2011	 	Binary	Joey	UTB
+2006 (1)	J0848+16*	452.26	38.2	25 June 2006
+22 Apr 2010	20 June 2006	 	 	Cornell
+2005 (1)	J0241+16*	1545.30	16.7	3 Apr 2005
+17 Apr 2011	3 Apr 2005	Presto
+
+#SUPERB
+J0326-29 	03:25:59 	-28:49:38	767.90	32	57822	 	
+"Pepoch" = discovery date  
+J0621-55 	06:21:57	-55:57:28 	 -	22 	57166 	 	1 	First SUPERB "RRAT"
+ J0749-68
+ 07:49:47	 -68:45:49	 915.170  	26 	56840	 	1	 First SUPERB discovery!
+J1116-10	11:15:43	-09:55:44 	1310.76	14	57316	 	 	 
+J1120-24 	11:20:10 	-23:38:51	497.02	11	57411	GBNCC	 	 
+ J1126-38	11:26:21 	-38:38:37 	877.621 	51 	57256	GBNCC	1	 
+J1208-45	12:07:43 	-45:10:43	1769.63	102	56935	 	 	 
+J1234-37	12:33:51	-36:34:53	569.16	60	57256	GBNCC 	 	 
+J1244-18	12:44:17 	-18:17:12	3425.1 	17 	57827	 	 	Intermittent 
+J1306-40 	13:07:13	-40:30:12 	2.204	35 	57194	 	1 	MSP, Intermittent 
+ J1337-44	13:37:08	-44:43:52 	1257.486	 102	56933 	 	1 	 
+ J1405-42	14:05:49 	-42:33:42 	2436.787	 93	57210 	 	1	 
+ J1421-44
+ 14:21:05  	-44:14:19 	6.385	55	56843 	 	1 	First SUPERB MSP! Binary.
+J1505-25	15:05:40	-25:22:52	 999.09	41 	57409	GBNCC 	 	 
+J1524-33 	15:23:32 	-32:32:48	1504.8 	80 	 57934	 	 	 
+J1530-26 	15:29:35 	-26:10:26	798.60	38 	57945	GBNCC 	 	 
+J1544-07	15:44:23 	-07:16:35 	484.12 	32 	57317	 	 	 
+ J1604-31 	16:04:23 	-31:39:33	883.899 	 53	57176 	 	1 	 
+ J1631-26	16:30:33 	 -26:02:10	 1912.42	73 	57213	
+ 	 
+J1646-19	16:46:19 	-19:15:41 	4817.9 	50 	57823	 	 	RRAT 
+J1700-10	16:59:47 	-09:53:54 	817.28 	59 	57199 	 	 	 
+J1759-55	17:59:13 	-55:09:21 	373.38 	69 	57000 	 	 	 
+J1828+12 	18:28:13 	+12:25:26 	1528.292 	65 	57736 	 	 	 
+J1849+15 	 18:48:57	+15:22:07 	2233.55 	110 	57943	LOTAAS	 	 
+J1910-06 	19:10:30 	-05:53:12 	557.62 	96 	57325	 	 	 
+ J1914+08	19:14:18 	+08:45:29 	440.077 	292 	57236 	PALFA 	1	 
+J1915+06	19:14:37 	+06:19:36 	878.75 	210	57859 	PALFA 	 	 
+J1917-30	19:16:38	-29:38:06 	1248.48 	38 	57405	GBNCC	 	 
+J1921-05	19:21:19 	-05:06:21	794.27	100	57325 	 	 	60-min FRB followup pointing
+J1923-04	19:23:22	-04:07:55	1149.23 	42 	57745	 	 	60-min FRB followup pointing
+J1928-01	19:28:16 	-01:12:06 	2365.76 	124 	57982	 	 	 
+J1940-09	19:40:42	-09:02:40	978.38	42	57410	 	 	 
+J1943-20	19:42:35	-20:19:29 	275.12 	59 	57392	 	 	 
+J2002-04	20:02:10 	-03:52:12 	1344.65 	80 	57383	 	 	 
+J2138-51	21:37:36 	-50:45:40 	267.31 	24 	57812	 	 	 
+J2154-28	21:54:51 	-28:17:30 	 1343.293	 40	57232 	 	1	 
+J2228-65	22:28:10	-65:10:48	2746.03	65	57235	 	 	
+J2252-37	22:51:44	-37:11:51 	12122.5	16	57364 	 	 	The twelve-second radio 
+
+# GBT 350MHz Drift
+J1023+00	1.69	14.33	 	new	10/14/2008	Not seen	McGill
+J2256-10	2.29	13.78	 	new	01/??/2009	Not seen	UBC
+J1327-07	2.68	27.9	 	new	06/23/2008	Not seen	WVU
+J0336+17	2.73	21.3	 	new	12/16/2011	Not seen	WVU
+J1923+25	3.79	18.9	 	new	01/??/2009	Not seen	McGill
+J1738-08	4.18	55.3	3.4	new	03/10/2008	Not seen	WVU
+J0931-19	4.64	41.5	 	new	05/11/2011	Not seen	UTB
+J2221-01	32.8	3.2	 	new	05/20/2009	Not seen	WVU
+J0343+04	39.1	40.5	 	new	01/??/2009	Not seen	NRAO
+J1643-10	62.8	76	 	new	12/??/2011	Not seen	UTB
+J1444+18	132	17	 	new	??/??/????	N/A	UTB
+J1941+01	217	51	 	new	08/06/2008	Not seen	NRAO
+J1543-07	242	30	 	new	??/??/????	Not seen	UTB
+J1911+22	320	47	 	new	07/30/2010	Not seen	NRAO
+J1613+20	427	20	 	new	06/05/2008	Not seen	NRAO
+J1502+00	464	22	 	new	06/20/2008	J1502+00	NRAO
+J1134+24	501	23	 	new	??/??/????	N/A	UTB
+J1623-08	502	60	8	new	12/05/2007	J1623-08	WVU
+J2013-20	544	39	 	new	05/08/2008	Not seen	UBC
+J2013-06	580	64	 	new	05/06/2009	Not seen	WVU
+J1930-01	594	36	 	new	??/??/????	N/A	UTB
+J1745-01	680	67	 	new	??/??/????	N/A	UTB
+J1736-02	783	55	10	new	09/07/2007	Not seen	WVU
+J1519-06	795	28	 	new	05/17/2009	Not seen	WVU
+J1918-10	799	62	 	new	08/29/2008	J1918-10	NRAO
+J1902-08	887	67	11	new	12/11/2007	J1902-08	WVU
+J1633-20	936	49	 	new	07/02/2008	J1633-20	UBC
+J1556-05	975	24	 	new	05/09/2008	N/A	McGill
+J1853-06	1048	43	 	new	05/07/2009	J1853-06	WVU
+J2033-19	1282	24	 	new	03/12/2008	J2033-19	UBC
+J1547-09	1577	38	 	new	01/??/2009	J1547-09	UBC
+J0459-05	1883	48	 	new	07/18/2008	J0459-05	McGill
+J2033+00	2506	38	 	new	01/??/2009	J2033+00	McGill
+J1758-10	2513	38	 	new	12/19/2011	Not seen	UMW
+J2111+21	3952	58	22	new	10/26/2007	J2111+21	WVU
+
+# FAST
+1	J1859-01	18 59	-01	1832	188	PSR	FFT	2017-08-22	 2017-09-10(Parkes)	
+2	J2337+48	23 38	+48	119	34	PSR	FFT	2017-08-04	 2017-10-06(Effelsberg)	
+3	J1931-02	19 31	-02	593	36	PSR	FFT	2017-08-22	 2017-09-10(Parkes)	 Coincide with GBT drift 350-MHz search result J1930-01
+4	J1926-07	19 26	-07	1612	85	PSR	FFT	2017-08-31	 2017-10-07(Parkes)	
+5	J1852-07	18 52	-07	640	228	PSR	FFT	2017-09-02	 2017-10-07(Parkes)	
+6	J1945+12	19 45	+12	4745	95	PSR	FFT	2017-09-03	 2017-10-08(Parkes)	
+ 7	 J2323+12	 23 23	 +12	 3760	 22	 PSR	 SP	 2017-09-01	 2017-10-17(Parkes)	
+ 8	 J1825-01	 18 25	 -01	 224	 80	 PSR	 FFT	 2017-08-25	 2017-10-24(Parkes)	
+ 9	J0402+48	 04 02	 +48	 512	 86	 PSR	 FFT	 2017-09-05	 2017-11-23(Effelsberg)	
+ 10	J0528-07	 05 29	 -07	 689	 80	 PSR	 FFT	 2017-10-20	 2018-01-29(Parkes)	
+ 11	J0344-08	03 44	 -08	409	 34	 PSR	 FFT	 2017-11-09	 2018-02-02(Parkes)
+ 12	J0021-09	00 21	 -09	2316	 25	 PSR	 FFT	 2017-11-11	 2018-03-17(Parkes)
+ 13	J2053+47	20 53	 +47	4910	331	 PSR	 FFT	 2018-02-07	 2018-03-19(Effelsberg)
+ 14	J2006+41	20 06	 +41	499	259	 PSR	 FFT	 2018-02-13	 2018-03-19(Effelsberg)
+ 15	J1942+39	19 42	 +39	1353	105	 PSR	 FFT	 2018-04-26	 2018-05-13(Effelsberg)
+ 16	J1949+47	19 47	 +47	182	104	 PSR	 FFT	 2018-04-23	 2018-05-13(Effelsberg)
+ 17	J1919+52	19 19	+26	652	96	 PSR	 FFT	 2017-08-23	 2018-05-25(Parkes)
+ 18	J1822+26	18 22	 +26	591	65	 PSR	 FFT	 2018-04-29	 2018-05-25(Parkes)
+

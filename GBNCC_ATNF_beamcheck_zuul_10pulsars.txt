@@ -1,0 +1,40 @@
+# Using S/N > 6 for detection threshold on zuul
+# Using beams within 0.5 deg of pulsars from test.dat
+# Flux adjusted for offset from beam center
+# Expected S/N estimated from published flux values
+# Flux estimated from measured S/N, uncertainty estimated from dependencies
+# File generated 2018-06-27 15:59:26 (ET)
+#   PSRJ  	  Distance  	   MJD   	    S/N exp. 	   S/N meas. 	 Flux Estimate	 Flux Error 	  Status 
+#		    (deg)   	  (day)						     (mJy)  	   (mJy)  
+J0030+0451	 0.0866818 	  58229  	  54.441	  42.551	     8.738    	   2.437    	Detected in Beam # 69542
+J0030+0451	 0.4353667 	  58229  	  17.053	  13.511	     8.857    	   0.681    	Detected in Beam # 69919
+J0815+4611	 0.4499337 	  55508  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 20741
+J0815+4611	 0.2271788 	  55508  	 -10.000	  17.874	     2.548    	   0.596    	Detected in Beam # 21118
+J0815+4611	 0.3367663 	  55527  	 -10.000	  11.611	     1.811    	   0.371    	Detected in Beam # 21351
+  J0613+37	 0.4953231 	  55986  	 -10.000	   2.462	     0.759    	   0.319    	Not Detected in # 30318
+  J0613+37	 0.1020208 	  55846  	 -10.000	   2.629	     0.142    	   0.103    	Not Detected in # 30695
+  J1529+40	 0.4026872 	  55689  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 26081
+  J1529+40	 0.1594990 	  55689  	 -10.000	   2.542	     0.161    	   0.105    	Not Detected in # 26458
+  J1529+40	 0.4367232 	  55992  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 26691
+  J0140+56	 0.2853643 	  55279  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 12508
+  J0140+56	 0.4023118 	  55325  	 -10.000	   2.586	     0.648    	   0.201    	Not Detected in # 12652
+  J0140+56	 0.3264678 	  55328  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 12885
+  J0935+33	 0.4587098 	  56023  	 -10.000	   5.161	     2.450    	   0.280    	Not Detected in # 34030
+  J0935+33	 0.2865917 	  56047  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 34263
+  J0935+33	 0.2394882 	  56047  	 -10.000	   4.478	     0.586    	   0.149    	Not Detected in # 34640
+  J2350+31	 0.3913036 	  56073  	 -10.000	   3.793	     1.184    	   0.213    	Not Detected in # 35793
+  J2350+31	 0.3615036 	  56078  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 36026
+  J2350+31	 0.2325065 	  56078  	 -10.000	   0.000	     0.000    	   0.000    	Not Detected in # 36403
+# Pulsars with beams not found on zuul
+#   PSRJ  	Distance (deg)
+  J1809+17	  125.9828571  	Beam # 53502 Not Found
+  J1809+17	  126.4878120  	Beam # 53879 Not Found
+  J1809+17	  126.0681640  	Beam # 54112 Not Found
+  J1809+17	  126.5735562  	Beam # 54489 Not Found
+  J0317+13	  129.9217410  	Beam # 58059 Not Found
+  J0317+13	  130.4283142  	Beam # 58436 Not Found
+  J0317+13	  129.9439423  	Beam # 58669 Not Found
+  J0305+11	  131.9705008  	Beam # 60698 Not Found
+  J0305+11	  132.4751160  	Beam # 61075 Not Found
+  J0305+11	  131.9507149  	Beam # 61308 Not Found
+  J0305+11	  132.4550699  	Beam # 61685 Not Found
