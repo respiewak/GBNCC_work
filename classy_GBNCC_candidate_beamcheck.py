@@ -42,7 +42,6 @@ import astropy.coordinates as coord
 from astropy.table import Table,Column
 from astropy import units as u, constants as c
 
-
 # Function to find distance 
 def ang_offset(lon1,lat1,lon2,lat2):
 	x="%f %f" %(lon1,lat1)
@@ -121,6 +120,7 @@ class Pulsar:
 		self.par=''
 		self.temp=0
 		self.params=name,ra,dec,p0,p1,dm	
+		self.pos="%s %s" %(ra,dec)
 		if self.dec > -40 - ang_max:
 			self.north=True
 		else:
@@ -142,6 +142,9 @@ class Pulsar:
 		for i in self.beams:
 			Str=Str+" %s" %i.num
 		print Str
+	def set_pos(self,(ra,dec)):
+		self.ra=ra
+		self.dec=dec
 
 class Beam:
 	def __init__(self,beam):
@@ -151,7 +154,7 @@ class Beam:
 		self.fits=''
 		self.ra=t[t['pointing']==beam]['RAdeg']
 		self.dec=t[t['pointing']==beam]['Decdeg']
-		self.pos=coord.SkyCoord(self.ra[0],self.dec[0],unit=('deg','deg'))
+		self.pos="%s %s" %(self.ra,self.dec)
 	def add_mask(self,mask):
 		self.mask=mask	
 	def add_fits(self,fits):
@@ -220,16 +223,21 @@ num_north=0
 beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
 pulsar_list=[]
 
-
 # Check file information (assumes order of data in file)
 if not file_psr is None:
     p_coord=[]
     try:
         for i in range(len(np.genfromtxt(file_psr,usecols=[0]))):
-            pulsar_list.append(Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[i]))   
+    	    pulsar_list.append(Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','S16','S16','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[i]))   
+            try:
+	        pulsar_list[i].ra.split(':')[1]
+	        pulsar_list[i]=Pulsar((pulsar_list[i].name,coord.SkyCoord(pulsar_list[i].pos,unit=('hourangle','deg')).ra.value,coord.SkyCoord(pulsar_list[i].pos,unit=('hourangle','deg')).dec.value,pulsar_list[i].p0,pulsar_list[i].p1,pulsar_list[i].dm))
+            except:
+                pulsar_list[i]=Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[i])
+	    print pulsar_list[i].params
             num_north+=int(pulsar_list[i].north)
     except:
-	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
+	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','S10','S10','<f8','S10','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
 	num_north+=int(pulsar_list[0].north)
     print "%d/%d pulsars in survey area. Finding closest beams..." %(num_north,len(pulsar_list))
     if num_north==0:
@@ -249,7 +257,7 @@ else:
     else:
 	print "%s not in survey area." %psr_name
 	exit()
-    p_coord=coord.SkyCoord(pulsar.ra,pulsar.dec,unit=('deg','deg'))
+    p_coord=coord.SkyCoord(pulsar.ra,pulsar.dec,unit=('hourangle','deg'))
     if str(beam_psr) == "None":
 	for j in range(len(t[p_coord.separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<ang_max*u.deg]['pointing'])):
 	    if pulsar.north and not int(t[p_coord.separation(coord.SkyCoord(t['RAdeg'],t['Decdeg']))<ang_max*u.deg]['pointing'][j].strip('GBNCC')) in beam_rejects:
