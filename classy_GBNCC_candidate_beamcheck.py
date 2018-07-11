@@ -28,6 +28,8 @@
 # -nonew      Do not copy new fits files into directories 
 # -out	      Choose output location
 # --par       Provide par file or directory in which par file is stored (if the latter, par file is assumed to be [pulsarJname].par 
+# --rew	      Reprocess, i.e. delete previous output
+# --outrt     Set root for output file (default is GBNCC_ATNF_beamcheck)
 
 #########################################################
 
@@ -98,6 +100,8 @@ NUMBER, JNAME, RA, DEC, P0, P1, DM)")
                       help="do not copy new fits files into directories")
     pars.add_argument("-o","--out",action="store",help="output location (default is /users/rspiewak/pulsars/)")
     pars.add_argument("--par",action="store",help="parameter file or directory in which parameter file is stored")
+    pars.add_argument("--rew",action="store_true",dest="rewrite",help="delete old output and rewrite")
+    pars.add_argument("--outrt",action="store",dest="outputroot",help="root for name of summary file")
     args = vars(pars.parse_args())
 
     if args['pos'] != None and len(args["pos"].split()) > 1:
@@ -183,7 +187,8 @@ f_pub = args["pub"]
 rfi_fil = args["rfi"]
 pull_new = args["pull_new"]
 par_file = args["par"]
-
+rewrite = args["rewrite"]
+outrt = args["outputroot"]
 if "ra_psr" in args:
     ra_psr = args["ra_psr"]
     dec_psr = args["dec_psr"]
@@ -234,10 +239,14 @@ if not file_psr is None:
 	        pulsar_list[i]=Pulsar((pulsar_list[i].name,coord.SkyCoord(pulsar_list[i].pos,unit=('hourangle','deg')).ra.value,coord.SkyCoord(pulsar_list[i].pos,unit=('hourangle','deg')).dec.value,pulsar_list[i].p0,pulsar_list[i].p1,pulsar_list[i].dm))
             except:
                 pulsar_list[i]=Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[i])
-	    print pulsar_list[i].params
             num_north+=int(pulsar_list[i].north)
     except:
 	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','S10','S10','<f8','S10','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
+        try:
+	    pulsar_list[0].ra.split(':')[1]
+	    pulsar_list[0]=Pulsar((pulsar_list[0].name,coord.SkyCoord(pulsar_list[0].pos,unit=('hourangle','deg')).ra.value,coord.SkyCoord(pulsar_list[0].pos,unit=('hourangle','deg')).dec.value,pulsar_list[0].p0,pulsar_list[0].p1,pulsar_list[0].dm))
+	except:
+	    pulsar_list[0]=Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[0])
 	num_north+=int(pulsar_list[0].north)
     print "%d/%d pulsars in survey area. Finding closest beams..." %(num_north,len(pulsar_list))
     if num_north==0:
@@ -291,7 +300,7 @@ temp_sys = np.array(temp_sky + 70)   # system temperature at 350MHz
 
 read_file2.close()
 
-file_flux = '/users/rspiewak/pulsars/GBNCC_ATNF_fluxes.dat'
+file_flux = '/lustre/cv/projects/GBNCC/amcewen/GBNCC_ATNF_fluxes_071018.dat'
 psr_flux = np.loadtxt(file_flux,usecols=(1,),dtype=str,unpack=True)
 s400_flux,s1400_flux,spindx_flux = np.loadtxt(file_flux,usecols=(10,12,14),unpack=True)
 s350_flux = []
@@ -336,8 +345,7 @@ dist_unobs = []
 beam_unobs = []
 name_short = []
 
-if proc_psr == True:
-    print "Checking S/N for profiles, with threshold = %.1f" %snr_min
+print "Checking S/N for profiles -- threshold = %.1f" %snr_min
 
 
 # Find observations and, optionally, process with PRESTO
@@ -382,10 +390,10 @@ for psr in pulsar_list:
     if str(par_file) == "None":
 	if len(glob('%sparfiles/%s_short.par' %(renee_dir,psr.name)))>0:
 	    psr.add_par(glob('%sparfiles/%s_short.par' %(renee_dir,psr.name))[0])
-	if len(glob(data_dir+'amcewen/binary_pars/%s*' %psr.name))>0:
-	    psr.add_par(glob(data_dir+'amcewen/binary_pars/%s*' %psr.name)[0])
+	if len(glob(data_dir+'amcewen/pars/%s*' %psr.name))>0:
+	    psr.add_par(glob(data_dir+'amcewen/pars/%s*' %psr.name)[0])
 	if psr.par == '' and proc_psr == True and len(psr.name)>=10:
-	    print "Cannot find par file in %sparfiles/ or in %samcewen/binary_pars/" %(renee_dir,data_dir)
+	    print "Cannot find par file in %sparfiles/ or in %samcewen/pars/" %(renee_dir,data_dir)
     else:
 	if os.path.isdir(par_file):
     	    try:
@@ -403,6 +411,9 @@ for psr in pulsar_list:
 	elif not os.path.isdir("%s_temp" %psr.name):
 	    print "Skipping new pulsar: "+psr.name
 	    continue
+	elif rewrite:
+	    sproc.call("rm -r %s%s_temp" %(work_dir,psr.name),shell=True)
+	    os.mkdir("%s%s_temp" %(work_dir,psr.name))
 	os.chdir("%s_temp/" %psr.name)
 	if not os.path.isfile('%s_short.par' %psr.name) and not psr.par == '':
 	    sproc.call('cp -sf %s .' %psr.par,shell=True)
@@ -448,7 +459,7 @@ for psr in pulsar_list:
 			    rfi_opt = " -zapchan 2470:3270"
 			else:
 			    rfi_opt = " "
-			if len(glob(work_dir+'*/*%s*%s*rfifind.mask' %(beam_cand.mjd,beam_cand.num)))==0 or len(glob(work_dir+'*/*%s*%s*rfifind.stats' %(beam_cand.mjd,beam_cand.num)))==0:
+			if len(glob('%s%s_temp/*%s*%s*rfifind.mask' %(work_dir,psr.name,beam_cand.mjd,beam_cand.num)))==0 or len(glob('%s%s_temp/*%s*%s*rfifind.stats' %(work_dir,psr.name,beam_cand.mjd,beam_cand.num)))==0:
 			    if len(glob(data_dir+'amcewen/mask_files/*%s*%s*rfifind.mask' %(beam_cand.mjd,beam_cand.num)))==0 or len(glob(data_dir+'amcewen/mask_files/*%s*%s*rfifind.stats' %(beam_cand.mjd,beam_cand.num)))==0:
 			    	    mask_dir=glob(data_dir+'20*/*%s*GBNCC%s*' %(beam_cand.mjd,beam_cand.num))[0].split('/')[5] 
 				    if len(glob(data_dir+mask_dir+'/*rfi*tar*'))>0:
@@ -487,8 +498,8 @@ for psr in pulsar_list:
 				    sproc.call('cp -fs %s .' %stats_dir,shell=True)
 			else:
 			    "retrieving .mask & .stats files from %s%s_temp/" %(work_dir,psr.name)
-			    mask_list=glob(work_dir+'*/*%s*%s*rfifind.mask' %(beam_cand.mjd,beam_cand.num))
-			    stats_list=glob(work_dir+'*/*%s*%s*rfifind.stats' %(beam_cand.mjd,beam_cand.num))
+			    mask_list=glob(work_dir+'%s_temp/*%s*%s*rfifind.mask' %(psr.name,beam_cand.mjd,beam_cand.num))
+			    stats_list=glob(work_dir+'%s_temp/*%s*%s*rfifind.stats' %(psr.name,beam_cand.mjd,beam_cand.num))
 			    for mask_dir in mask_list:
 				stats_dir=mask_dir.strip('mask')+'stats' 
 			        if os.getcwd() != '/'+mask_dir.strip('/%s_%s_%s_rfifind.mask' %(psr.name,beam_cand.mjd,beam_cand.num)):
@@ -695,9 +706,9 @@ for psr in pulsar_list:
 					       %(beam_cand.num,psr.name,work_dir), shell=True)
 			    else:
 				if snr_exp <= 0:
-				    exptd = "Unknown exp. : %d" %snr_exp
+				    exptd = "Unknown exp."
 				elif snr_exp > snr_min*1.5:
-				    exptd = "Unexpected"
+				    exptd = "Unexpected - expected S/N %.3f" %snr_exp
 				else:
 				    exptd = "Expected"
 				print "PSR %s not detected in beam #%s; S/N < %.1f: %s" \
@@ -756,7 +767,10 @@ observations on %s for %d beams" \
     %(num_north,len(name_short),len(ra_detect),use_comp,len(ra_unobs))
 
 # Write out summary to file in readable form
-writefile = open("%sGBNCC_ATNF_beamcheck_%s_%dpulsars.txt" %(work_dir,use_comp,len(pulsar_list)), 'w')
+if "outputroot" in args:
+    writefile = open("%s%s_%s_%dpulsars.txt" %(work_dir,outrt,use_comp,len(pulsar_list)), 'w')
+else:
+    writefile = open("%sGBNCC_ATNF_beamcheck_%s_%dpulsars.txt" %(work_dir,use_comp,len(pulsar_list)), 'w')
 writefile.write("# Using S/N > %s for detection threshold on %s\n" %(snr_min,use_comp))
 writefile.write("# Using beams within %.1f deg of pulsars from %s\n" %(ang_max,file_psr))
 if '-pub' in args:
