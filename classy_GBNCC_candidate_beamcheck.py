@@ -225,7 +225,7 @@ ra_pointings=np.array(t['RAdeg'])
 dec_pointings=np.array(t['Decdeg'])
 
 num_north=0
-beam_rejects = np.array([13691,17237,19064,72172,80142,83626,114632,115242,120582])
+beam_rejects = np.array([19906,20312,13691,17237,19064,72172,80142,83626,114632,115242,120582])
 pulsar_list=[]
 
 # Check file information (assumes order of data in file)
@@ -246,7 +246,7 @@ if not file_psr is None:
 	    pulsar_list[0].ra.split(':')[1]
 	    pulsar_list[0]=Pulsar((pulsar_list[0].name,coord.SkyCoord(pulsar_list[0].pos,unit=('hourangle','deg')).ra.value,coord.SkyCoord(pulsar_list[0].pos,unit=('hourangle','deg')).dec.value,pulsar_list[0].p0,pulsar_list[0].p1,pulsar_list[0].dm))
 	except:
-	    pulsar_list[0]=Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[0])
+	    pulsar_list[0]=Pulsar((pulsar_list[0].name,float(pulsar_list[0].ra),float(pulsar_list[0].dec),float(pulsar_list[0].p0),pulsar_list[0].p1,pulsar_list[0].dm))
 	num_north+=int(pulsar_list[0].north)
     print "%d/%d pulsars in survey area. Finding closest beams..." %(num_north,len(pulsar_list))
     if num_north==0:
@@ -497,12 +497,14 @@ for psr in pulsar_list:
 				    sproc.call('cp -fs %s .' %mask_dir,shell=True)
 				    sproc.call('cp -fs %s .' %stats_dir,shell=True)
 			else:
-			    "retrieving .mask & .stats files from %s%s_temp/" %(work_dir,psr.name)
+			    print "retrieving .mask & .stats files from %s%s_temp/" %(work_dir,psr.name)
 			    mask_list=glob(work_dir+'%s_temp/*%s*%s*rfifind.mask' %(psr.name,beam_cand.mjd,beam_cand.num))
 			    stats_list=glob(work_dir+'%s_temp/*%s*%s*rfifind.stats' %(psr.name,beam_cand.mjd,beam_cand.num))
 			    for mask_dir in mask_list:
 				stats_dir=mask_dir.strip('mask')+'stats' 
-			        if os.getcwd() != '/'+mask_dir.strip('/%s_%s_%s_rfifind.mask' %(psr.name,beam_cand.mjd,beam_cand.num)):
+			        if os.getcwd().split('/')[-1] != mask_dir.split('/')[-2]: 
+				    print os.getcwd().split('/')[-1], mask_dir.split('/')[-2]
+				    exit()
 			    	    sproc.call('cp -fs %s .' %mask_dir, shell=True)
 			    	    sproc.call('cp -fs %s .' %stats_dir, shell=True)
 			print "mask file located"
