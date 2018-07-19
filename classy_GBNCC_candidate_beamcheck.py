@@ -233,15 +233,15 @@ if not file_psr is None:
     p_coord=[]
     try:
         for i in range(len(np.genfromtxt(file_psr,usecols=[0]))):
-    	    pulsar_list.append(Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','S16','S16','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[i]))   
+    	    pulsar_list.append(Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','S16','S16','<f8','S15','S10')},usecols=[1,2,3,4,5,6])[i]))   
             try:
 	        pulsar_list[i].ra.split(':')[1]
 	        pulsar_list[i]=Pulsar((pulsar_list[i].name,coord.SkyCoord(pulsar_list[i].pos,unit=('hourangle','deg')).ra.value,coord.SkyCoord(pulsar_list[i].pos,unit=('hourangle','deg')).dec.value,pulsar_list[i].p0,pulsar_list[i].p1,pulsar_list[i].dm))
             except:
-                pulsar_list[i]=Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S10','S10')},usecols=[1,2,3,4,5,6])[i])
+                pulsar_list[i]=Pulsar(np.genfromtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','<f8','<f8','<f8','S15','S10')},usecols=[1,2,3,4,5,6])[i])
             num_north+=int(pulsar_list[i].north)
     except:
-	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','S10','S10','<f8','S10','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
+	pulsar_list.append(Pulsar(np.loadtxt(file_psr,dtype={'names':('name','ra','dec','period','period derivative','dm'),'formats':('S10','S10','S10','<f8','S15','S10')},usecols=[1,2,3,4,5,6],ndmin=1)[0]))
         try:
 	    pulsar_list[0].ra.split(':')[1]
 	    pulsar_list[0]=Pulsar((pulsar_list[0].name,coord.SkyCoord(pulsar_list[0].pos,unit=('hourangle','deg')).ra.value,coord.SkyCoord(pulsar_list[0].pos,unit=('hourangle','deg')).dec.value,pulsar_list[0].p0,pulsar_list[0].p1,pulsar_list[0].dm))
@@ -322,20 +322,34 @@ for S400,S1400,spindx in zip(s400_flux,s1400_flux,spindx_flux):
         
 s350_flux = np.array(s350_flux)
 
+# Create cumulative output file
+if "outputroot" in args:
+    summary_file = open("%s%s_%s_%dpulsars.txt" %(work_dir,outrt,use_comp,len(pulsar_list)), 'w')
+else:
+    summary_file = open("%sGBNCC_ATNF_beamcheck_%s_%dpulsars.txt" %(work_dir,use_comp,len(pulsar_list)), 'w')
+summary_file.write("# Using S/N > %s for detection threshold on %s\n" %(snr_min,use_comp))
+summary_file.write("# Using beams within %.1f deg of pulsars from %s\n" %(ang_max,file_psr))
+if '-pub' in args:
+    summary_file.write('# Only searched for published pulsars\n')
+summary_file.write("# Flux adjusted for offset from beam center\n")
+summary_file.write("# Expected S/N estimated from published flux values\n")
+summary_file.write("# Flux estimated from measured S/N, uncertainty estimated from dependencies\n")
+summary_file.write("# File generated %s (ET)\n" %strftime("%Y-%m-%d %H:%M:%S"))
+summary_file.write("#   PSRJ  \t   RA \t\t     Dec \t P0 \t\t\tP1 \t      DM \t Distance  \t  MJD   \t S/N exp. \t  S/N meas. \t     Est. Flux\t   Flux Error\tStatus \n")
+summary_file.write("#\t\t   (deg)   \t    (deg) \t (s) \t\t\t(s/s) \t      (p/cc) \t (deg)\t\t  (day)\t\t\t\t\t             (mJy)  \t   (mJy)  \n")
 
-
-name_found = []
+#name_found = []
 name_detect = []
 name_unobs = []
 ra_found = []
 dec_found = []
-dist_found = []
+#dist_found = []
 snr_e_found = []
 snr_found = []
 S_found = []
 dS_found = []
 beam_found = []
-MJD_found = []
+#MJD_found = []
 ra_detect = []
 dec_detect = []
 beam_detect = []
@@ -429,10 +443,10 @@ for psr in pulsar_list:
 		    MJD_beam = int(fits_list[0].split('/')[-1].split('_')[1])
 		    ra_found.append(ra_cand)
 		    dec_found.append(dec_cand)
-		    name_found.append(psr.name)
-		    dist_found.append(beam_cand.off)
+#		    name_found.append(psr.name)
+#		    dist_found.append(beam_cand.off)
 		    beam_found.append(beam_cand.num)
-		    MJD_found.append(MJD_beam)
+#		    MJD_found.append(MJD_beam)
 		    # Process files to find detections
 		    if proc_psr == True:
 			if os.getcwd() != work_dir+'%s_temp' %psr.name:
@@ -487,7 +501,7 @@ for psr in pulsar_list:
 					    rfi_out.close()
 					    del p
 					    sproc.call('rm *.bytemask *.inf *d.ps *.rfi', shell=True)
-				    print "retrieving .mask and .stats files from /lustre/cv/projects/GBNCC/amcewen/mask_files/" 
+				    print "retrieving .mask and .stats files from %samcewen/mask_files/" %data_dir
 				    sproc.call('cp *%s*%s_*d.mask %samcewen/mask_files/' %(beam_cand.mjd,beam_cand.num,data_dir), shell=True)
 				    sproc.call('cp *%s*%s_*d.stats %samcewen/mask_files/' %(beam_cand.mjd,beam_cand.num,data_dir), shell=True) 
 			    else:
@@ -503,8 +517,6 @@ for psr in pulsar_list:
 			    for mask_dir in mask_list:
 				stats_dir=mask_dir.strip('mask')+'stats' 
 			        if os.getcwd().split('/')[-1] != mask_dir.split('/')[-2]: 
-				    print os.getcwd().split('/')[-1], mask_dir.split('/')[-2]
-				    exit()
 			    	    sproc.call('cp -fs %s .' %mask_dir, shell=True)
 			    	    sproc.call('cp -fs %s .' %stats_dir, shell=True)
 			print "mask file located"
@@ -564,7 +576,7 @@ for psr in pulsar_list:
 			    fold_out = open('prepfold_%s_%s_output.txt' %(beam_cand.mjd,beam_cand.num),'w')
 			    prepfold_parameters="prepfold -p %.11f " %psr.p0
 			    if psr.p1 != "*":
-				prepfold_parameters=prepfold_parameters+"-pd %.2s " %psr.p1
+				prepfold_parameters=prepfold_parameters+"-pd %s " %psr.p1
 			    if psr.dm != "*":
 				prepfold_parameters=prepfold_parameters+"-dm %.3s " %psr.dm
 			    fold_out.write(prepfold_parameters+" %s %s" 
@@ -659,9 +671,11 @@ for psr in pulsar_list:
 			    snr_found.append(snr_beam)
 			    S_found.append(S_offset)
 			    dS_found.append(dS_offset)
+    			    summary_file.write("%10s\t %8s \t %8s \t %.4f \t %8s \t %8s \t %.7f \t  %5d  \t %7.3f\t %7.3f\t   %7.3f    \t %7.3f    \t" %(psr.name,psr.ra,psr.dec,psr.p0,psr.p1,psr.dm,beam_cand.off,MJD_beam,snr_exp,snr_beam,S_offset,dS_offset))
 			    if snr_beam > snr_min:
 				print "PSR %s detected in beam #%s on MJD %d with S/N of %.3f; expected S/N %.3f" \
 				    %(psr.name, beam_cand.num, MJD_beam, snr_beam, snr_exp)
+        		        summary_file.write("Detected in Beam #%6s\n" %beam_cand.num)
 				ra_detect.append(ra_cand)
 				dec_detect.append(dec_cand)
 				name_detect.append(psr.name)
@@ -715,6 +729,7 @@ for psr in pulsar_list:
 				    exptd = "Expected"
 				print "PSR %s not detected in beam #%s; S/N < %.1f: %s" \
 				    %(psr.name, beam_cand.num, snr_min, exptd)
+        			summary_file.write("Not Detected in #%6s\n" %beam_cand.num)
 			os.chdir(work_dir)
 		    else:
 			snr_e_found.append(-1.0)
@@ -723,27 +738,32 @@ for psr in pulsar_list:
 			dS_found.append(1.0)
 		else:
 		    print "Cannot find beam #%s on %s for PSR %s" %(beam_cand.num, use_comp, psr.name)
+		    summary_file.write("%10s\t %8s \t %8s \t %.4f \t %8s \t %8s \t  %.7f  \tBeam #%6s Not Found\n" %(psr.name,psr.ra,psr.dec,psr.p0,psr.p1,psr.dm,beam_cand.off,beam_cand.num))
 		    ra_unobs.append(ra_pointings[int(beam_cand.num)])
 		    dec_unobs.append(dec_pointings[int(beam_cand.num)])
 		    name_unobs.append(psr.name)
 		    dist_unobs.append(ang_offset(ra_pointings[int(beam_cand.num)],dec_pointings[int(beam_cand.num)],psr.ra,psr.dec))
 		    beam_unobs.append(beam_cand.num)
 		    os.chdir(work_dir)
-if len(name_unobs) > 0 and name_unobs[-1] == psr.name and (len(name_found) == 0 or name_found[-1] != psr.name):
-	print "Found no beams on %s for PSR %s" %(use_comp, psr.name)
+
+
+
+
+#if len(name_unobs) > 0 and name_unobs[-1] == psr.name and (len(name_found) == 0 or name_found[-1] != psr.name):
+	#print "Found no beams on %s for PSR %s" %(use_comp, psr.name)
 print ""        
 print "YYYEEEEEAAAAAAA (code ran successfully)"
 print ""
 ra_found = np.array(ra_found)
 dec_found = np.array(dec_found)
-name_found = np.array(name_found)
-dist_found = np.array(dist_found)
+#name_found = np.array(name_found)
+#dist_found = np.array(dist_found)
 snr_e_found = np.array(snr_e_found)
 snr_found = np.array(snr_found)
 S_found = np.array(S_found)
 dS_found = np.array(dS_found)
 beam_found = np.array(beam_found)
-MJD_found = np.array(MJD_found)
+#MJD_found = np.array(MJD_found)
 ra_detect = np.array(ra_detect)
 dec_detect = np.array(dec_detect)
 name_detect = np.array(name_detect)
@@ -768,39 +788,42 @@ print "%d pulsars in survey area\nDetected %d pulsars in %d beams\nUnable to fin
 observations on %s for %d beams" \
     %(num_north,len(name_short),len(ra_detect),use_comp,len(ra_unobs))
 
+"""
 # Write out summary to file in readable form
 if "outputroot" in args:
-    writefile = open("%s%s_%s_%dpulsars.txt" %(work_dir,outrt,use_comp,len(pulsar_list)), 'w')
+    summary_file = open("%s%s_%s_%dpulsars.txt" %(work_dir,outrt,use_comp,len(pulsar_list)), 'w')
 else:
-    writefile = open("%sGBNCC_ATNF_beamcheck_%s_%dpulsars.txt" %(work_dir,use_comp,len(pulsar_list)), 'w')
-writefile.write("# Using S/N > %s for detection threshold on %s\n" %(snr_min,use_comp))
-writefile.write("# Using beams within %.1f deg of pulsars from %s\n" %(ang_max,file_psr))
+    summary_file = open("%sGBNCC_ATNF_beamcheck_%s_%dpulsars.txt" %(work_dir,use_comp,len(pulsar_list)), 'w')
+summary_file.write("# Using S/N > %s for detection threshold on %s\n" %(snr_min,use_comp))
+summary_file.write("# Using beams within %.1f deg of pulsars from %s\n" %(ang_max,file_psr))
 if '-pub' in args:
-    writefile.write('# Only searched for published pulsars\n')
-writefile.write("# Flux adjusted for offset from beam center\n")
-writefile.write("# Expected S/N estimated from published flux values\n")
-writefile.write("# Flux estimated from measured S/N, uncertainty estimated from dependencies\n")
-writefile.write("# File generated %s (ET)\n" %strftime("%Y-%m-%d %H:%M:%S"))
-writefile.write("#   PSRJ  \t  Distance  \t   MJD   \t    S/N exp. \t   S/N meas. \t Flux \
+    summary_file.write('# Only searched for published pulsars\n')
+summary_file.write("# Flux adjusted for offset from beam center\n")
+summary_file.write("# Expected S/N estimated from published flux values\n")
+summary_file.write("# Flux estimated from measured S/N, uncertainty estimated from dependencies\n")
+summary_file.write("# File generated %s (ET)\n" %strftime("%Y-%m-%d %H:%M:%S"))
+summary_file.write("#   PSRJ  \t  Distance  \t   MJD   \t    S/N exp. \t   S/N meas. \t Flux \
 Estimate\t Flux Error \t  Status \n")
-writefile.write("#\t\t    (deg)   \t  (day)\t\t\t\t\t\t     (mJy)  \t   (mJy)  \n")
+summary_file.write("#\t\t    (deg)   \t  (day)\t\t\t\t\t\t     (mJy)  \t   (mJy)  \n")
+
 for NAME,DIST,MJD,SNR_E,SNR,FLUX,dFLUX,BEAM in zip(name_found,dist_found,MJD_found,snr_e_found,
                                                    snr_found,S_found,dS_found,beam_found):
-    writefile.write("%10s\t %.7f \t  %5d  \t %7.3f\t %7.3f\t   %7.3f    \t %7.3f    \t"
+    summary_file.write("%10s\t %.7f \t  %5d  \t %7.3f\t %7.3f\t   %7.3f    \t %7.3f    \t"
                     %(NAME,DIST,MJD,SNR_E,SNR,FLUX,dFLUX))
     if len(beam_detect) > 0 and len(beam_detect[np.logical_and(beam_detect == BEAM,
                                                                name_detect == NAME)]) > 0:
-        writefile.write("Detected in Beam #%6s\n" %BEAM)
+        summary_file.write("Detected in Beam #%6s\n" %BEAM)
     else:
-        writefile.write("Not Detected in #%6s\n" %BEAM)
+        summary_file.write("Not Detected in #%6s\n" %BEAM)
 
-writefile.write("# Pulsars with beams not found on %s\n#   PSRJ  \tDistance (deg)\n" %use_comp)
+
+summary_file.write("# Pulsars with beams not found on %s\n#   PSRJ  \tDistance (deg)\n" %use_comp)
 for NAME,DIST,BEAM in zip(name_unobs,dist_unobs,beam_unobs):
-    writefile.write("%10s\t  %.7f  \tBeam #%6s Not Found\n" %(NAME,DIST,BEAM))
+    summary_file.write("%10s\t  %.7f  \tBeam #%6s Not Found\n" %(NAME,DIST,BEAM))
 
-writefile.close()
+summary_file.close()
 #sproc.call('cp -s %sGBNCC_ATNF_beamcheck_%s_%d.txt .' %(work_dir,use_comp,jj),shell=True)
-
+"""
 
     
 """
