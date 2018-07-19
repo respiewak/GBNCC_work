@@ -1,0 +1,5 @@
+files that are referenced:
+	-GBNCC pointings (no update)
+	-sky temperature file (/users/amcewen/GBNCC_work/skytemp.dat) needs to be updated!
+	-flux file (/users/rspiewak/pulsars/GBNCC_ATNF_fluxes.dat) might need to be updated!
+	-binary pulsar par files (/lustre/cv/projects/GBNCC/amcewen/binary_pars)
